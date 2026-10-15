@@ -3909,7 +3909,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     var pts = T.mapa, ll = pts.map(function (p) { return [p.lat, p.lon]; });
     var MD = window.MAPDATA;
     if (!MD) {  // en la app se carga mapa.json (queda guardado para usarlo sin cobertura)
-      fetch("mapa.json").then(function (x) { return x.json(); }).then(function (d) { window.MAPDATA = d; initRealMap(); }, showMapFallback);
+      fetch("mapa.json?v=153b6c42").then(function (x) { return x.json(); }).then(function (d) { window.MAPDATA = d; initRealMap(); }, showMapFallback);
       return;
     }
     function dec(a, from) { var out = [], la = 0, lo = 0; for (var i = from || 0; i < a.length; i += 2) { la += a[i]; lo += a[i + 1]; out.push([la / 1e5, lo / 1e5]); } return out; }
