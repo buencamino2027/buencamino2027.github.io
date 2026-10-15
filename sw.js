@@ -1,6 +1,6 @@
 // Service worker: guarda la app en el móvil para que funcione sin cobertura.
 // Si cambias index.html, sube el número de versión para que todos reciban la nueva.
-const CACHE = "camino-v19";
+const CACHE = "camino-v20";
 const CORE = [
   "./",
   "./index.html",
@@ -53,10 +53,23 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE && k !== SAT).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
+
+// Satélite (PNOA): primero lo guardado en el móvil; si no, internet y se guarda.
+const SAT = "camino-sat";
+async function satFirst(request) {
+  const cache = await caches.open(SAT);
+  const hit = await cache.match(request.url);
+  if (hit) return hit;
+  try {
+    const res = await fetch(request.url, { mode: "cors" });
+    if (res && res.ok) cache.put(request.url, res.clone());
+    return res;
+  } catch (e) { return new Response("", { status: 504 }); }
+}
 
 // Red primero (para recibir cambios de trip.json); si no hay cobertura, la copia guardada.
 async function networkFirst(request) {
@@ -85,6 +98,7 @@ self.addEventListener("fetch", (event) => {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
 
+  if (url.hostname === "www.ign.es") { event.respondWith(satFirst(req)); return; }
   if (url.origin === self.location.origin) {
     if (req.mode === "navigate" || url.pathname.endsWith("/trip.json") || url.pathname.endsWith("/index.html")) {
       event.respondWith(networkFirst(req));
