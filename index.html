@@ -596,6 +596,7 @@ details.fold[open] > summary svg { transform: rotate(90deg); }
 /* Mapa real (Leaflet) */
 .realmap-wrap { position: relative; }
 .realmap { position: relative; z-index: 0; isolation: isolate; height: 400px; border-radius: var(--r-card); overflow: hidden; border: 1.5px solid rgba(255, 255, 255, .2); background: #DDE3D8; box-shadow: var(--shadow); }
+.realmap .leaflet-tile-pane { filter: saturate(.8) sepia(.06); }
 .realmap .leaflet-container, .realmap.leaflet-container { font-family: var(--font-body); background: #DDE3D8; }
 .mk { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; background: var(--white); border: 2.5px solid var(--ink); box-shadow: 0 2px 6px rgba(0, 0, 0, .35); font: 800 11px var(--font-hand); color: var(--ink); }
 .mk.noche { background: var(--sun); }
@@ -3852,11 +3853,21 @@ svg.leaflet-image-layer.leaflet-interactive path {
     var pts = T.mapa, ll = pts.map(function (p) { return [p.lat, p.lon]; });
     realMap = L.map(el, { scrollWheelZoom: false, zoomControl: true, attributionControl: true, zoomSnap: 0.25 });
     var loaded = false;
-    var tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-      subdomains: "abcd", maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
+    // Mapa base gratuito sin clave (OpenStreetMap); si falla, se cambia a Esri
+    var tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
     }).addTo(realMap);
+    var errs = 0, swapped = false;
     tiles.on("tileload", function () { loaded = true; });
+    tiles.on("tileerror", function () {
+      if (swapped || ++errs < 3) return; swapped = true;
+      realMap.removeLayer(tiles);
+      tiles = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", {
+        maxZoom: 19, attribution: "Tiles &copy; Esri"
+      }).addTo(realMap);
+      tiles.on("tileload", function () { loaded = true; });
+    });
     setTimeout(function () { if (!loaded) showMapFallback(); }, 6000);
     L.polyline(ll, { color: "#141613", weight: 9, opacity: .55, lineCap: "round", lineJoin: "round" }).addTo(realMap);
     L.polyline(ll, { color: "#F6FF1C", weight: 5, opacity: 1, lineCap: "round", lineJoin: "round", dashArray: "1 10" }).addTo(realMap);

@@ -1,6 +1,6 @@
 // Service worker: guarda la app en el móvil para que funcione sin cobertura.
 // Si cambias index.html, sube el número de versión para que todos reciban la nueva.
-const CACHE = "camino-v17";
+const CACHE = "camino-v18";
 const CORE = [
   "./",
   "./index.html",
@@ -90,7 +90,7 @@ self.addEventListener("fetch", (event) => {
     } else {
       event.respondWith(staleWhileRevalidate(req));
     }
-  } else if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com" || url.hostname.endsWith("basemaps.cartocdn.com")) {
+  } else if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com" || url.hostname.endsWith("basemaps.cartocdn.com") || url.hostname === "tile.openstreetmap.org" || url.hostname === "server.arcgisonline.com") {
     event.respondWith(staleWhileRevalidate(req));
   }
 });
