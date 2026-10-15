@@ -1147,5 +1147,8 @@
         "notas": "Tren de Santiago a Madrid el domingo 28."
       }
     }
+  },
+  "compartido": {
+    "db": "https://buencamino2027-73368-default-rtdb.europe-west1.firebasedatabase.app"
   }
 }

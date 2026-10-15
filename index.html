@@ -2560,6 +2560,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "notas": "Tren de Santiago a Madrid el domingo 28."
    }
   }
+ },
+ "compartido": {
+  "db": "https://buencamino2027-73368-default-rtdb.europe-west1.firebasedatabase.app"
  }
 }</script>
 <script>
@@ -3661,14 +3664,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
       '<p class="bingo-status">' + (full ? "<b>¡BINGO!</b> Cartón completo." : wins.length ? "<b>" + wins.length + (wins.length === 1 ? " línea" : " líneas") + "</b> · " + c.on.length + " de 16" : c.on.length + " de 16 marcadas") + "</p></div>" +
       '<p class="hint">Cada uno tiene su propio cartón en su móvil. «Nuevo cartón» baraja otras casillas.</p></div>';
 
-    var poo = store("camino-cacas") || {}, people = T.viaje.viajeros, total = 0, max = 0;
+    var poo = pooCounts(), people = T.viaje.viajeros, total = 0, max = 0;
     people.forEach(function (p) { total += poo[p] || 0; max = Math.max(max, poo[p] || 0); });
     html += '<div class="section">' + heading("contador de cacas", "") +
       '<div class="poo-total">' + POO + "<div><b class=\"num\">" + total + '</b><div class="hint">' + (total === 1 ? "caca" : "cacas") + " en el Camino</div></div></div>" +
       '<div class="poo">' + people.map(function (p) {
         var n = poo[p] || 0;
         return '<div class="poo-row">' + avImg(p, "") + '<span class="nm">' + esc(p) + (max > 0 && n === max ? '<span class="crown">líder</span>' : "") + '</span><button class="poo-btn" type="button" data-poo="' + esc(p) + '" data-d="-1" aria-label="Quitar una a ' + esc(p) + '"' + (n ? "" : " disabled") + '>−</button><span class="n num" id="poo-' + slug(p) + '">' + n + '</span><button class="poo-btn plus" type="button" data-poo="' + esc(p) + '" data-d="1" aria-label="Sumar una a ' + esc(p) + '">+</button></div>';
-      }).join("") + '</div><p class="hint">Se cuenta en este móvil: que lleve el marcador una sola persona.</p></div>';
+      }).join("") + '</div><p class="hint">' + (POO_DB ? (pooOnline ? "Compartido: todos veis el mismo marcador al momento." : "Compartido. Sin conexión ahora: lo que sumes se envía cuando vuelva la cobertura.") : "Se cuenta en este móvil.") + "</p></div>";
 
     var panel = $("panel-juegos");
     panel.innerHTML = html;
@@ -3691,13 +3694,79 @@ svg.leaflet-image-layer.leaflet-interactive path {
     });
     panel.querySelectorAll("[data-poo]").forEach(function (b) {
       b.addEventListener("click", function () {
-        var pp = store("camino-cacas") || {}, who = b.getAttribute("data-poo"), d = Number(b.getAttribute("data-d"));
-        pp[who] = Math.max(0, (pp[who] || 0) + d); store("camino-cacas", pp);
-        var y = window.scrollY; renderJuegos(); window.scrollTo(0, y);
-        var el = $("poo-" + slug(who)); if (el && d > 0) el.classList.add("bump");
+        var who = b.getAttribute("data-poo"), d = Number(b.getAttribute("data-d"));
+        if (d < 0 && !(pooCounts()[who] > 0)) return;
+        pooAdd(who, d);
       });
     });
   }
+
+  // ---------- contador de cacas compartido (Firebase Realtime Database, vía REST) ----------
+  var POO_DB = "";
+  var pooOnline = false, pooES = null;
+  function pooKey(name) { return slug(name); }
+  function pooCounts() {
+    // marcador común (última copia) + lo que este móvil aún no ha podido enviar
+    var base = POO_DB ? (store("camino-cacas-red") || {}) : (store("camino-cacas") || {});
+    if (!POO_DB) return base;
+    var pend = store("camino-cacas-pend") || {}, out = {};
+    T.viaje.viajeros.forEach(function (p) { out[p] = Math.max(0, (base[pooKey(p)] || 0) + (pend[pooKey(p)] || 0)); });
+    return out;
+  }
+  function pooRefresh() {
+    var y = window.scrollY; renderJuegos(); window.scrollTo(0, y);
+  }
+  function pooAdd(who, d) {
+    if (!POO_DB) {
+      var pp = store("camino-cacas") || {}; pp[who] = Math.max(0, (pp[who] || 0) + d); store("camino-cacas", pp);
+    } else {
+      var pend = store("camino-cacas-pend") || {}, k = pooKey(who); pend[k] = (pend[k] || 0) + d; store("camino-cacas-pend", pend);
+      pooFlush();
+    }
+    pooRefresh();
+    var el = $("poo-" + slug(who)); if (el && d > 0) el.classList.add("bump");
+  }
+  var pooFlushing = false;
+  function pooFlush() {
+    if (!POO_DB || pooFlushing) return;
+    var pend = store("camino-cacas-pend") || {}, keys = Object.keys(pend).filter(function (k) { return pend[k]; });
+    if (!keys.length) return;
+    pooFlushing = true;
+    var body = {}; keys.forEach(function (k) { body[k] = { ".sv": { increment: pend[k] } }; });
+    fetch(POO_DB + "/cacas.json", { method: "PATCH", body: JSON.stringify(body) }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function (res) {
+      var now = store("camino-cacas-pend") || {}, red = store("camino-cacas-red") || {};
+      keys.forEach(function (k) { now[k] = (now[k] || 0) - pend[k]; if (!now[k]) delete now[k]; if (res && typeof res[k] === "number") red[k] = res[k]; });
+      store("camino-cacas-pend", now); store("camino-cacas-red", red);
+      pooOnline = true; pooFlushing = false; pooRefresh();
+      if (Object.keys(now).length) pooFlush();
+    }).catch(function () { pooOnline = false; pooFlushing = false; pooRefresh(); });
+  }
+  function pooApply(path, data) {
+    var red = store("camino-cacas-red") || {};
+    if (path === "/") red = (data && typeof data === "object") ? data : {};
+    else { var k = path.replace(/^\//, "").split("/")[0]; if (typeof data === "number") red[k] = data; else delete red[k]; }
+    store("camino-cacas-red", red); pooOnline = true; pooRefresh();
+  }
+  function pooConnect() {
+    if (!POO_DB) return;
+    fetch(POO_DB + "/cacas.json").then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (d) { pooApply("/", d); pooFlush(); }, function () { pooOnline = false; });
+    if (window.EventSource && !pooES) {
+      try {
+        pooES = new EventSource(POO_DB + "/cacas.json");
+        var on = function (e) { try { var m = JSON.parse(e.data); pooApply(m.path, m.data); } catch (x) {} };
+        pooES.addEventListener("put", on); pooES.addEventListener("patch", function (e) {
+          try { var m = JSON.parse(e.data); Object.keys(m.data || {}).forEach(function (k) { pooApply((m.path === "/" ? "" : m.path) + "/" + k, m.data[k]); }); } catch (x) {}
+        });
+        pooES.onerror = function () { pooOnline = false; try { pooES.close(); } catch (x) {} pooES = null; setTimeout(pooConnect, 15000); };
+      } catch (e) {}
+    }
+  }
+  window.addEventListener("online", function () { pooConnect(); pooFlush(); });
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) { pooConnect(); pooFlush(); } });
 
   // ---------- mapa real ----------
   var realMap = null;
@@ -3962,7 +4031,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
   loadTrip().then(function (data) {
     T = data;
     if (!T) { document.querySelector("main").innerHTML = '<p class="hint">No se han podido cargar los datos del viaje. Revisa que trip.json esté bien escrito.</p>'; return; }
+    POO_DB = ((T.compartido && T.compartido.db) || "").replace(/\/+$/, "");
     renderHeader(); renderItinerario(); renderDocumentos(); renderEmergencias(); renderMapa(); renderJuegos();
+    pooConnect();
     document.querySelectorAll("[data-tab]").forEach(function (t) { t.addEventListener("click", function () { showTab(t.getAttribute("data-tab"), true); }); });
     document.addEventListener("click", function (ev) { var b = ev.target.closest("[data-copy]"); if (b) { ev.preventDefault(); ev.stopPropagation(); copyText(b.getAttribute("data-copy")); } }, true);
     $("fab").addEventListener("click", function () { openGasto(null); });
