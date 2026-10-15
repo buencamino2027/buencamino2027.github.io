@@ -1,0 +1,1152 @@
+{
+  "viaje": {
+    "nombre": "Camino de Santiago 2027",
+    "ruta": "Camino Francés · Sarria → Santiago",
+    "inicio": "2027-03-22",
+    "fin": "2027-03-28",
+    "kmTotal": 115,
+    "viajeros": [
+      "Sandra",
+      "Ana",
+      "Javi",
+      "Fran",
+      "Marina",
+      "Janina",
+      "Jorge",
+      "Marta",
+      "Pablo",
+      "Álvaro",
+      "Alberto"
+    ],
+    "fotoPortada": "intro"
+  },
+  "pendientes": [
+    {
+      "texto": "Confirmar Camino Francés (desde Sarria) o Portugués (desde Tui)",
+      "fecha": ""
+    },
+    {
+      "texto": "Reservar los alojamientos con cancelación gratuita",
+      "fecha": "2026-10-16"
+    },
+    {
+      "texto": "Elegir alojamiento en Santiago (noche del 27)",
+      "fecha": ""
+    },
+    {
+      "texto": "Comprar transporte de ida y vuelta (Málaga y Madrid)",
+      "fecha": ""
+    },
+    {
+      "texto": "Contratar seguro de viaje y apuntar la póliza",
+      "fecha": ""
+    },
+    {
+      "texto": "Pedir la credencial del peregrino (2 sellos al día desde Sarria)",
+      "fecha": ""
+    }
+  ],
+  "itinerario": [
+    {
+      "fecha": "2027-03-22",
+      "titulo": "Viaje a Sarria",
+      "tipo": "viaje",
+      "desde": "Málaga / Madrid",
+      "hasta": "Sarria",
+      "km": 0,
+      "kmRestantes": 115,
+      "alojamiento": "sarria",
+      "horario": [
+        {
+          "hora": "~15:00",
+          "texto": "Vuelo desde Málaga a Galicia (el último de la tarde sale sobre las 15:00–15:30)"
+        },
+        {
+          "hora": "Tarde",
+          "texto": "Los de Madrid, en tren"
+        },
+        {
+          "hora": "Noche",
+          "texto": "Llegada a Sarria, cena y a dormir pronto"
+        }
+      ],
+      "notas": [
+        "Sellar la credencial en Sarria",
+        "Comprar agua y algo para el desayuno del día siguiente"
+      ],
+      "foto": "g-verde",
+      "puntos": [
+        "Vuelo o tren hasta Galicia",
+        "Llegada a Sarria",
+        "Sellar la credencial"
+      ]
+    },
+    {
+      "fecha": "2027-03-23",
+      "titulo": "Sarria → Portomarín",
+      "tipo": "etapa",
+      "desde": "Sarria",
+      "hasta": "Portomarín",
+      "km": 22,
+      "kmRestantes": 93,
+      "alojamiento": "portomarin",
+      "horario": [
+        {
+          "hora": "07:30",
+          "texto": "Desayuno y salida"
+        },
+        {
+          "hora": "Media mañana",
+          "texto": "Mojón del km 100"
+        },
+        {
+          "hora": "~14:00",
+          "texto": "Llegada a Portomarín cruzando el río Miño"
+        }
+      ],
+      "notas": [
+        "Primer día: ritmo suave",
+        "PortoHome 2 tiene lavadora"
+      ],
+      "foto": "g-pasos",
+      "puntos": [
+        "Mojón del km 100",
+        "Cruzar el río Miño",
+        "Noche en Portomarín"
+      ],
+      "portada": "p-musgo"
+    },
+    {
+      "fecha": "2027-03-24",
+      "titulo": "Portomarín → Palas de Rei",
+      "tipo": "etapa",
+      "desde": "Portomarín",
+      "hasta": "Palas de Rei",
+      "km": 25,
+      "kmRestantes": 68,
+      "alojamiento": "palas",
+      "horario": [
+        {
+          "hora": "07:30",
+          "texto": "Salida"
+        },
+        {
+          "hora": "Mañana",
+          "texto": "Subida a la Sierra de Ligonde"
+        },
+        {
+          "hora": "~14:30",
+          "texto": "Llegada a Palas de Rei"
+        }
+      ],
+      "notas": [
+        "Etapa con subida al principio: salir abrigados"
+      ],
+      "foto": "g-rebano",
+      "puntos": [
+        "Subida a la Sierra de Ligonde",
+        "Etapa tranquila",
+        "Noche en Palas de Rei"
+      ],
+      "portada": "p-ovejas"
+    },
+    {
+      "fecha": "2027-03-25",
+      "titulo": "Palas de Rei → Arzúa",
+      "tipo": "etapa",
+      "desde": "Palas de Rei",
+      "hasta": "Arzúa",
+      "km": 29,
+      "kmRestantes": 39,
+      "alojamiento": "arzua",
+      "horario": [
+        {
+          "hora": "07:00",
+          "texto": "Salida temprano: es la etapa más larga"
+        },
+        {
+          "hora": "Mediodía",
+          "texto": "Parada para comer pulpo en Melide"
+        },
+        {
+          "hora": "~16:00",
+          "texto": "Llegada a Arzúa"
+        }
+      ],
+      "notas": [
+        "Jueves Santo (festivo)",
+        "En Arzúa hay lavandería de pago"
+      ],
+      "foto": "g-valle",
+      "puntos": [
+        "Pulpo en Melide",
+        "La etapa más larga",
+        "Noche en Arzúa"
+      ],
+      "portada": "p-madera"
+    },
+    {
+      "fecha": "2027-03-26",
+      "titulo": "Arzúa → O Pedrouzo",
+      "tipo": "etapa",
+      "desde": "Arzúa",
+      "hasta": "O Pedrouzo",
+      "km": 19,
+      "kmRestantes": 20,
+      "alojamiento": "pedrouzo",
+      "horario": [
+        {
+          "hora": "08:00",
+          "texto": "Salida con calma"
+        },
+        {
+          "hora": "~13:00",
+          "texto": "Llegada a las cabañas, justo antes de O Pedrouzo"
+        }
+      ],
+      "notas": [
+        "Viernes Santo (festivo)",
+        "Probar el queso de Arzúa antes de salir"
+      ],
+      "foto": "g-hierba",
+      "puntos": [
+        "Queso de Arzúa",
+        "Bosques de eucalipto",
+        "Noche en las cabañas"
+      ],
+      "portada": "p-lana"
+    },
+    {
+      "fecha": "2027-03-27",
+      "titulo": "O Pedrouzo → Santiago",
+      "tipo": "etapa",
+      "desde": "O Pedrouzo",
+      "hasta": "Santiago",
+      "km": 20,
+      "kmRestantes": 0,
+      "alojamiento": "santiago",
+      "horario": [
+        {
+          "hora": "07:30",
+          "texto": "Salida"
+        },
+        {
+          "hora": "Mañana",
+          "texto": "Monte do Gozo: primera vista de la catedral"
+        },
+        {
+          "hora": "~13:00",
+          "texto": "Llegada a la Plaza del Obradoiro"
+        },
+        {
+          "hora": "Tarde",
+          "texto": "Oficina del Peregrino para la Compostela"
+        }
+      ],
+      "notas": [
+        "Llevar la credencial con todos los sellos",
+        "Foto de grupo en el Obradoiro"
+      ],
+      "foto": "santiago",
+      "puntos": [
+        "Monte do Gozo",
+        "Plaza del Obradoiro",
+        "Recoger la Compostela"
+      ],
+      "portada": "santiago"
+    },
+    {
+      "fecha": "2027-03-28",
+      "titulo": "Santiago y vuelta",
+      "tipo": "santiago",
+      "desde": "Santiago",
+      "hasta": "Casa",
+      "km": 0,
+      "kmRestantes": 0,
+      "alojamiento": "",
+      "horario": [
+        {
+          "hora": "Mañana",
+          "texto": "Paseo por el casco antiguo"
+        },
+        {
+          "hora": "Antes de 13:35",
+          "texto": "Vuelo de vuelta (no hay vuelos más tarde)"
+        }
+      ],
+      "notas": [
+        "Domingo de Resurrección: Santiago estará lleno",
+        "Se habló de volver el lunes 29 porque sale más barato (sin decidir)"
+      ],
+      "foto": "g-botas",
+      "puntos": [
+        "Paseo por el casco antiguo",
+        "Vuelta a casa"
+      ]
+    }
+  ],
+  "transporte": [
+    {
+      "id": "ida",
+      "sentido": "Ida",
+      "tipo": "Avión",
+      "fecha": "2027-03-22",
+      "origen": "Málaga",
+      "origenCod": "AGP",
+      "destino": "Santiago",
+      "destinoCod": "SCQ",
+      "sale": "15:00",
+      "llega": "",
+      "numero": "",
+      "asiento": "",
+      "puerta": "",
+      "localizador": "",
+      "compania": "",
+      "estado": "Sin reservar",
+      "notas": "Último vuelo de la tarde hacia las 15:00–15:30. Los de Madrid van en tren: cada uno puede cambiar su billete."
+    },
+    {
+      "id": "vuelta",
+      "sentido": "Vuelta",
+      "tipo": "Avión",
+      "fecha": "2027-03-28",
+      "origen": "Santiago",
+      "origenCod": "SCQ",
+      "destino": "Málaga",
+      "destinoCod": "AGP",
+      "sale": "",
+      "llega": "",
+      "numero": "",
+      "asiento": "",
+      "puerta": "",
+      "localizador": "",
+      "compania": "",
+      "estado": "Sin reservar",
+      "notas": "Después de las 13:35 no hay vuelos. Se habló de volver el lunes 29 porque sale más barato."
+    }
+  ],
+  "alojamientos": [
+    {
+      "id": "sarria",
+      "noche": "22–23 mar",
+      "lugar": "Sarria",
+      "nombre": "dpCristal Sarria Centro",
+      "precioPP": 22.4,
+      "estado": "Propuesto",
+      "cancelacion": "Gratuita",
+      "localizador": "",
+      "booking": "https://www.booking.com/Share-EKAXRJ",
+      "mapa": "dpCristal Sarria Centro, Sarria, Lugo",
+      "notas": "",
+      "foto": "aloj-sarria"
+    },
+    {
+      "id": "portomarin",
+      "noche": "23–24 mar",
+      "lugar": "Portomarín",
+      "nombre": "PortoHome 2",
+      "precioPP": 33,
+      "estado": "Propuesto",
+      "cancelacion": "Gratuita",
+      "localizador": "",
+      "booking": "https://www.booking.com/Share-1GaR0r",
+      "mapa": "PortoHome 2, Portomarín, Lugo",
+      "notas": "Casa entera: 4 dormitorios y 2 baños. Tiene lavadora.",
+      "foto": "aloj-portomarin"
+    },
+    {
+      "id": "palas",
+      "noche": "24–25 mar",
+      "lugar": "Palas de Rei",
+      "nombre": "Estrela do Camiño",
+      "precioPP": 34,
+      "estado": "Propuesto",
+      "cancelacion": "Gratuita",
+      "localizador": "",
+      "booking": "https://www.booking.com/Share-3uXzoow",
+      "mapa": "Estrela do Camiño, Palas de Rei, Lugo",
+      "notas": "",
+      "foto": "aloj-palas"
+    },
+    {
+      "id": "arzua",
+      "noche": "25–26 mar",
+      "lugar": "Arzúa",
+      "nombre": "Viviendas Uso Turístico Arzúa",
+      "precioPP": 27.4,
+      "estado": "Propuesto",
+      "cancelacion": "Gratuita",
+      "localizador": "",
+      "booking": "https://www.booking.com/Share-H7qaIwm",
+      "mapa": "Viviendas Uso Turístico Arzúa, Arzúa, A Coruña",
+      "notas": "Apartamento entero: 4 dormitorios, 2 baños, 9 camas y 2 sofás cama.",
+      "foto": "aloj-arzua"
+    },
+    {
+      "id": "pedrouzo",
+      "noche": "26–27 mar",
+      "lugar": "O Pedrouzo",
+      "nombre": "O Pedrouzo Pilgrim (cabañas)",
+      "precioPP": 27.8,
+      "estado": "Propuesto",
+      "cancelacion": "Gratuita",
+      "localizador": "",
+      "booking": "https://www.booking.com/Share-HtkGYg",
+      "mapa": "O Pedrouzo Pilgrim camping, O Pino, A Coruña",
+      "notas": "Cabañas de camping justo antes de entrar en O Pedrouzo.",
+      "foto": "aloj-pedrouzo"
+    },
+    {
+      "id": "santiago",
+      "noche": "27–28 mar",
+      "lugar": "Santiago",
+      "nombre": "Por decidir",
+      "precioPP": null,
+      "estado": "Por decidir",
+      "cancelacion": "",
+      "localizador": "",
+      "booking": "",
+      "mapa": "Santiago de Compostela",
+      "notas": "Opción de ChatGPT: Pensión Capital de Galicia, 59,70 € pp, no reembolsable y a 1,5 km del centro.",
+      "foto": "santiago"
+    }
+  ],
+  "seguro": {
+    "compania": "",
+    "poliza": "",
+    "telefonoAsistencia": "",
+    "notas": "Llevad la tarjeta sanitaria. Si no estás dado de alta en la sanidad española, la Tarjeta Sanitaria Europea."
+  },
+  "emergencias": [
+    {
+      "nombre": "Emergencias",
+      "numero": "112",
+      "desc": "Ambulancia, bomberos o policía. Gratis y desde cualquier móvil."
+    },
+    {
+      "nombre": "Guardia Civil",
+      "numero": "062",
+      "desc": "Zonas rurales y caminos."
+    }
+  ],
+  "frases": [
+    {
+      "gl": "Bo Camiño!",
+      "es": "¡Buen Camino! (el saludo entre peregrinos)",
+      "pron": "bo ka-MI-ño"
+    },
+    {
+      "gl": "Bos días",
+      "es": "Buenos días",
+      "pron": "bos DÍ-as"
+    },
+    {
+      "gl": "Boa tarde",
+      "es": "Buenas tardes",
+      "pron": "BO-a TAR-de"
+    },
+    {
+      "gl": "Moitas grazas",
+      "es": "Muchas gracias",
+      "pron": "MOI-tas GRA-thas"
+    },
+    {
+      "gl": "Onde está a farmacia?",
+      "es": "¿Dónde está la farmacia?",
+      "pron": "ON-de es-TÁ a far-MA-thia"
+    },
+    {
+      "gl": "Canto custa?",
+      "es": "¿Cuánto cuesta?",
+      "pron": "KAN-to KUS-ta"
+    },
+    {
+      "gl": "Unha cervexa, por favor",
+      "es": "Una cerveza, por favor",
+      "pron": "U-nha ther-VE-sha"
+    },
+    {
+      "gl": "A conta, por favor",
+      "es": "La cuenta, por favor",
+      "pron": "a KON-ta"
+    },
+    {
+      "gl": "Estou moi canso",
+      "es": "Estoy muy cansado",
+      "pron": "es-TOU moi KAN-so"
+    },
+    {
+      "gl": "Ata logo!",
+      "es": "¡Hasta luego!",
+      "pron": "A-ta LO-go"
+    }
+  ],
+  "mochila": [
+    {
+      "cat": "Documentos",
+      "items": [
+        {
+          "id": "dni",
+          "n": "DNI o pasaporte",
+          "q": "1"
+        },
+        {
+          "id": "sanitaria",
+          "n": "Tarjeta sanitaria",
+          "q": "1"
+        },
+        {
+          "id": "credencial",
+          "n": "Credencial del peregrino",
+          "q": "1"
+        },
+        {
+          "id": "cartera",
+          "n": "Cartera con tarjeta y efectivo",
+          "q": "1"
+        },
+        {
+          "id": "billetes",
+          "n": "Billetes de ida y vuelta (en el móvil)",
+          "q": "2"
+        },
+        {
+          "id": "zip",
+          "n": "Bolsas zip para documentos y móvil",
+          "q": "3"
+        }
+      ]
+    },
+    {
+      "cat": "Ropa",
+      "items": [
+        {
+          "id": "camisetas",
+          "n": "Camisetas técnicas",
+          "q": "3"
+        },
+        {
+          "id": "interior",
+          "n": "Ropa interior",
+          "q": "4"
+        },
+        {
+          "id": "calcetines",
+          "n": "Calcetines técnicos",
+          "q": "4 pares"
+        },
+        {
+          "id": "pantalones",
+          "n": "Pantalones de caminar",
+          "q": "2"
+        },
+        {
+          "id": "forro",
+          "n": "Forro polar",
+          "q": "1"
+        },
+        {
+          "id": "chaqueta",
+          "n": "Chaqueta impermeable",
+          "q": "1"
+        },
+        {
+          "id": "poncho",
+          "n": "Poncho o cubremochila",
+          "q": "1"
+        },
+        {
+          "id": "tarde",
+          "n": "Conjunto cómodo para la tarde",
+          "q": "1"
+        },
+        {
+          "id": "pijama",
+          "n": "Pijama",
+          "q": "1"
+        },
+        {
+          "id": "gorra",
+          "n": "Gorra",
+          "q": "1"
+        },
+        {
+          "id": "guantes",
+          "n": "Guantes finos (marzo)",
+          "q": "1 par"
+        },
+        {
+          "id": "sujetador",
+          "n": "Sujetador deportivo",
+          "q": "2"
+        }
+      ]
+    },
+    {
+      "cat": "Calzado",
+      "items": [
+        {
+          "id": "botas",
+          "n": "Botas o zapatillas de trekking ya usadas",
+          "q": "1 par"
+        },
+        {
+          "id": "chanclas",
+          "n": "Chanclas para la ducha",
+          "q": "1 par"
+        }
+      ]
+    },
+    {
+      "cat": "Aseo",
+      "items": [
+        {
+          "id": "neceser",
+          "n": "Neceser: cepillo, pasta, desodorante, champú",
+          "q": "1"
+        },
+        {
+          "id": "crema",
+          "n": "Crema solar",
+          "q": "1"
+        },
+        {
+          "id": "cacao",
+          "n": "Cacao de labios",
+          "q": "1"
+        },
+        {
+          "id": "toalla",
+          "n": "Toalla de microfibra",
+          "q": "1"
+        },
+        {
+          "id": "panuelos",
+          "n": "Pañuelos",
+          "q": "3 paquetes"
+        },
+        {
+          "id": "toallitas",
+          "n": "Toallitas húmedas",
+          "q": "1"
+        },
+        {
+          "id": "jabon",
+          "n": "Jabón para lavar ropa",
+          "q": "1"
+        },
+        {
+          "id": "imperdibles",
+          "n": "Imperdibles para colgar ropa",
+          "q": "6"
+        },
+        {
+          "id": "tapones",
+          "n": "Tapones para los oídos",
+          "q": "1"
+        }
+      ]
+    },
+    {
+      "cat": "Botiquín",
+      "items": [
+        {
+          "id": "botiquin",
+          "n": "Botiquín pequeño",
+          "q": "1"
+        },
+        {
+          "id": "compeed",
+          "n": "Apósitos para ampollas",
+          "q": "1 caja"
+        },
+        {
+          "id": "vaselina",
+          "n": "Vaselina o crema antirrozaduras",
+          "q": "1"
+        },
+        {
+          "id": "ibuprofeno",
+          "n": "Ibuprofeno o paracetamol",
+          "q": "1"
+        },
+        {
+          "id": "esparadrapo",
+          "n": "Esparadrapo y tiritas",
+          "q": "1"
+        },
+        {
+          "id": "medicacion",
+          "n": "Tu medicación habitual",
+          "q": "—"
+        }
+      ]
+    },
+    {
+      "cat": "Tecnología",
+      "items": [
+        {
+          "id": "movil",
+          "n": "Móvil",
+          "q": "1"
+        },
+        {
+          "id": "cargador",
+          "n": "Cargador y cable",
+          "q": "1"
+        },
+        {
+          "id": "bateria",
+          "n": "Batería externa",
+          "q": "1"
+        },
+        {
+          "id": "frontal",
+          "n": "Frontal o linterna",
+          "q": "1"
+        },
+        {
+          "id": "auriculares",
+          "n": "Auriculares",
+          "q": "1"
+        }
+      ]
+    },
+    {
+      "cat": "Comida y agua",
+      "items": [
+        {
+          "id": "botella",
+          "n": "Botella o cantimplora de 1 L",
+          "q": "1"
+        },
+        {
+          "id": "frutos",
+          "n": "Frutos secos",
+          "q": "5 bolsitas"
+        },
+        {
+          "id": "fruta",
+          "n": "Fruta para el camino",
+          "q": "1 al día"
+        },
+        {
+          "id": "barritas",
+          "n": "Barritas energéticas",
+          "q": "5"
+        },
+        {
+          "id": "sales",
+          "n": "Sales de rehidratación",
+          "q": "5"
+        }
+      ]
+    },
+    {
+      "cat": "Otros",
+      "items": [
+        {
+          "id": "mochila",
+          "n": "Mochila de 30–40 L",
+          "q": "1"
+        },
+        {
+          "id": "concha",
+          "n": "Concha del peregrino",
+          "q": "1"
+        },
+        {
+          "id": "gafas",
+          "n": "Gafas de sol",
+          "q": "1"
+        },
+        {
+          "id": "bastones",
+          "n": "Bastones (opcional)",
+          "q": "2"
+        },
+        {
+          "id": "bolsa",
+          "n": "Bolsa para la ropa sucia",
+          "q": "1"
+        },
+        {
+          "id": "saco",
+          "n": "Saco sábana (opcional)",
+          "q": "1"
+        }
+      ]
+    }
+  ],
+  "mapa": [
+    {
+      "nombre": "Sarria",
+      "lat": 42.7809,
+      "lon": -7.4143,
+      "tipo": "inicio"
+    },
+    {
+      "nombre": "Portomarín",
+      "lat": 42.8075,
+      "lon": -7.6157,
+      "tipo": "noche"
+    },
+    {
+      "nombre": "Palas de Rei",
+      "lat": 42.8731,
+      "lon": -7.869,
+      "tipo": "noche"
+    },
+    {
+      "nombre": "Melide",
+      "lat": 42.9142,
+      "lon": -8.015,
+      "tipo": "paso"
+    },
+    {
+      "nombre": "Arzúa",
+      "lat": 42.9273,
+      "lon": -8.1631,
+      "tipo": "noche"
+    },
+    {
+      "nombre": "O Pedrouzo",
+      "lat": 42.9056,
+      "lon": -8.3609,
+      "tipo": "noche"
+    },
+    {
+      "nombre": "Monte do Gozo",
+      "lat": 42.8853,
+      "lon": -8.495,
+      "tipo": "paso"
+    },
+    {
+      "nombre": "Santiago",
+      "lat": 42.8806,
+      "lon": -8.5446,
+      "tipo": "meta"
+    }
+  ],
+  "comida": {
+    "tipico": [
+      "Pulpo á feira",
+      "Empanada gallega",
+      "Queso de Arzúa-Ulloa",
+      "Queso tetilla",
+      "Pimientos de Padrón",
+      "Lacón con grelos",
+      "Caldo gallego",
+      "Anguila del Miño",
+      "Tarta de Santiago",
+      "Licor café"
+    ],
+    "sitios": [
+      {
+        "lugar": "Sarria",
+        "dia": "2027-03-22",
+        "sitio": "A Pulpería do Luís",
+        "que": "Pulpo á feira, empanada y queso con membrillo",
+        "reserva": "no",
+        "nota": "Se llena pero va rápido. Solo abre a mediodía."
+      },
+      {
+        "lugar": "Sarria",
+        "dia": "2027-03-22",
+        "sitio": "Restaurante Roma",
+        "que": "Chuletón de ternera y milhojas de crema",
+        "reserva": "si",
+        "nota": "Buena opción para la cena de llegada."
+      },
+      {
+        "lugar": "Portomarín",
+        "dia": "2027-03-23",
+        "sitio": "O Mirador",
+        "que": "Anguila frita del Miño, pulpo a la plancha y croquetas",
+        "reserva": "si",
+        "nota": "Suele estar lleno. Vistas al embalse."
+      },
+      {
+        "lugar": "Palas de Rei",
+        "dia": "2027-03-24",
+        "sitio": "Pulpería Casa Camiño",
+        "que": "Pulpo, lacón con grelos y cachelos",
+        "reserva": "no",
+        "nota": "Abre todo el día."
+      },
+      {
+        "lugar": "Melide",
+        "dia": "2027-03-25",
+        "sitio": "Pulpería Ezequiel o A Garnacha",
+        "que": "Pulpo á feira con pan y vino en cunca",
+        "reserva": "no",
+        "nota": "La parada obligatoria de la etapa larga. Llegad antes de las 13:30."
+      },
+      {
+        "lugar": "Arzúa",
+        "dia": "2027-03-25",
+        "sitio": "Casa Teodora",
+        "que": "Menú del peregrino y queso de Arzúa",
+        "reserva": "si",
+        "nota": "Reservad para la cena."
+      },
+      {
+        "lugar": "O Pedrouzo",
+        "dia": "2027-03-26",
+        "sitio": "Bar O Pedrouzo",
+        "que": "Croca de ternera a la brasa",
+        "reserva": "si",
+        "nota": "Se llena por la noche. Solo efectivo."
+      },
+      {
+        "lugar": "Santiago",
+        "dia": "2027-03-27",
+        "sitio": "Abastos 2.0",
+        "que": "Producto del Mercado de Abastos: mejillones, pescado del día, pulpo",
+        "reserva": "si",
+        "nota": "Pequeño y muy pedido."
+      },
+      {
+        "lugar": "Santiago",
+        "dia": "2027-03-27",
+        "sitio": "O Gato Negro",
+        "que": "Pulpo á feira, almejas, percebes",
+        "reserva": "no",
+        "nota": "Taberna clásica junto a la catedral. Id pronto."
+      },
+      {
+        "lugar": "Santiago",
+        "dia": "2027-03-27",
+        "sitio": "Mesón 42",
+        "que": "Zamburiñas, empanada y filloas",
+        "reserva": "si",
+        "nota": "En la Rúa do Franco, la calle de los bares."
+      },
+      {
+        "lugar": "Santiago",
+        "dia": "2027-03-27",
+        "sitio": "Casa Marcelo",
+        "que": "Menú degustación del chef",
+        "reserva": "si",
+        "nota": "Plan de celebración: unos 60–90 € por persona."
+      }
+    ]
+  },
+  "mochilaFoto": {
+    "foto": "mochila",
+    "puntos": [
+      {
+        "id": "forro",
+        "x": 10,
+        "y": 18
+      },
+      {
+        "id": "chaqueta",
+        "x": 27,
+        "y": 18
+      },
+      {
+        "id": "gorra",
+        "x": 46,
+        "y": 9
+      },
+      {
+        "id": "gafas",
+        "x": 59,
+        "y": 10
+      },
+      {
+        "id": "frontal",
+        "x": 59,
+        "y": 15.5
+      },
+      {
+        "id": "crema",
+        "x": 67,
+        "y": 12
+      },
+      {
+        "id": "cacao",
+        "x": 72,
+        "y": 10
+      },
+      {
+        "id": "panuelos",
+        "x": 74,
+        "y": 19
+      },
+      {
+        "id": "neceser",
+        "x": 84,
+        "y": 12
+      },
+      {
+        "id": "toalla",
+        "x": 95,
+        "y": 15
+      },
+      {
+        "id": "camisetas",
+        "x": 10,
+        "y": 40
+      },
+      {
+        "id": "camisetas",
+        "x": 20,
+        "y": 40
+      },
+      {
+        "id": "camisetas",
+        "x": 30,
+        "y": 40
+      },
+      {
+        "id": "pantalones",
+        "x": 10,
+        "y": 62
+      },
+      {
+        "id": "pantalones",
+        "x": 25,
+        "y": 62
+      },
+      {
+        "id": "calcetines",
+        "x": 11,
+        "y": 83
+      },
+      {
+        "id": "interior",
+        "x": 25,
+        "y": 83
+      },
+      {
+        "id": "bastones",
+        "x": 39,
+        "y": 30
+      },
+      {
+        "id": "mochila",
+        "x": 55,
+        "y": 40
+      },
+      {
+        "id": "concha",
+        "x": 51,
+        "y": 63
+      },
+      {
+        "id": "dni",
+        "x": 65,
+        "y": 32
+      },
+      {
+        "id": "credencial",
+        "x": 72,
+        "y": 32
+      },
+      {
+        "id": "cartera",
+        "x": 78,
+        "y": 31
+      },
+      {
+        "id": "movil",
+        "x": 68,
+        "y": 45
+      },
+      {
+        "id": "cargador",
+        "x": 76,
+        "y": 44
+      },
+      {
+        "id": "bateria",
+        "x": 81,
+        "y": 47
+      },
+      {
+        "id": "botella",
+        "x": 88,
+        "y": 40
+      },
+      {
+        "id": "frutos",
+        "x": 96,
+        "y": 40
+      },
+      {
+        "id": "fruta",
+        "x": 91,
+        "y": 53
+      },
+      {
+        "id": "botiquin",
+        "x": 74,
+        "y": 63
+      },
+      {
+        "id": "toallitas",
+        "x": 88,
+        "y": 58
+      },
+      {
+        "id": "botas",
+        "x": 77,
+        "y": 83
+      },
+      {
+        "id": "chanclas",
+        "x": 93,
+        "y": 83
+      },
+      {
+        "id": "saco",
+        "x": 56,
+        "y": 90
+      }
+    ]
+  },
+  "rutas": {
+    "Málaga": {
+      "ida": {
+        "tipo": "Avión",
+        "origen": "Málaga",
+        "origenCod": "AGP",
+        "destino": "Santiago",
+        "destinoCod": "SCQ",
+        "sale": "15:00",
+        "notas": "Último vuelo de la tarde hacia las 15:00–15:30. Desde Santiago, bus o tren hasta Sarria."
+      },
+      "vuelta": {
+        "tipo": "Avión",
+        "origen": "Santiago",
+        "origenCod": "SCQ",
+        "destino": "Málaga",
+        "destinoCod": "AGP",
+        "sale": "",
+        "notas": "Después de las 13:35 no hay vuelos. Se habló de volver el lunes 29 porque sale más barato."
+      }
+    },
+    "Madrid": {
+      "ida": {
+        "tipo": "Tren",
+        "origen": "Madrid",
+        "origenCod": "MAD",
+        "destino": "Sarria",
+        "destinoCod": "SAR",
+        "sale": "",
+        "notas": "Los billetes de tren salen a la venta con menos antelación: estad atentos."
+      },
+      "vuelta": {
+        "tipo": "Tren",
+        "origen": "Santiago",
+        "origenCod": "SCQ",
+        "destino": "Madrid",
+        "destinoCod": "MAD",
+        "sale": "",
+        "notas": "Tren de Santiago a Madrid el domingo 28."
+      }
+    }
+  }
+}
