@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Buen Camino">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
 :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 body { margin: 0; }
@@ -95,7 +95,7 @@ a { color: inherit; }
 .splash-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(20, 22, 19, .5) 0%, rgba(20, 22, 19, .05) 36%, rgba(20, 22, 19, .1) 58%, rgba(20, 22, 19, .78) 100%); }
 .splash-top { width: 100%; max-width: var(--app-w); justify-self: center; display: flex; justify-content: space-between; align-items: flex-start; font-size: .82rem; position: relative; z-index: 2; }
 .splash-center { align-self: center; justify-self: center; text-align: center; display: grid; justify-items: center; gap: 6px; position: relative; z-index: 2; }
-.splash .shell-big { width: clamp(72px, 13vh, 112px); height: clamp(64px, 11.6vh, 100px); filter: url(#rough) drop-shadow(0 4px 12px rgba(0, 0, 0, .3)); }
+.splash .shell-big { width: clamp(98px, 18vh, 152px); height: clamp(64px, 11.6vh, 100px); filter: url(#rough) drop-shadow(0 4px 12px rgba(0, 0, 0, .3)); }
 .lettering { margin: 0; font-family: var(--font-hand); font-weight: 900; line-height: .82; text-transform: lowercase; filter: url(#rough-strong); }
 .lettering .w { display: block; white-space: nowrap; }
 .lettering .l { display: inline-block; }
@@ -119,7 +119,7 @@ a { color: inherit; }
 .brand { display: grid; gap: 2px; min-width: 0; }
 .brand .lettering { font-size: 2.3rem; color: var(--white); display: flex; align-items: flex-end; gap: 6px; flex-wrap: wrap; }
 .brand .lettering .w { display: inline-block; }
-.brand .shell-mini { width: 32px; height: 29px; flex: none; transform: translateY(-4px) rotate(-8deg); filter: url(#rough); }
+.brand .shell-mini { width: 44px; height: 29px; flex: none; transform: translateY(-4px) rotate(-8deg); filter: url(#rough); }
 .brand p { margin: 0; font-size: .82rem; color: var(--on-dark); }
 .countdown { margin-left: auto; flex: none; width: 80px; height: 80px; display: grid; place-content: center; text-align: center; background: var(--sun); color: var(--ink); border-radius: var(--r-blob); transform: rotate(6deg); }
 .countdown b { font-family: var(--font-hand); font-weight: 900; font-size: 1.8rem; line-height: .9; }
@@ -273,7 +273,7 @@ main { position: relative; z-index: 2; max-width: var(--app-w); margin: 0 auto; 
 .pass-foot b { font-weight: 600; font-size: .9rem; overflow-wrap: anywhere; }
 .pass-foot b.empty { color: var(--muted); font-weight: 400; }
 .pass-stamp { width: 58px; height: 58px; border-radius: 12px; background: var(--forest); display: grid; place-content: center; }
-.pass-stamp span { width: 38px; height: 34px; display: block; }
+.pass-stamp span { width: 48px; height: 34px; display: block; }
 .pass-note { margin: 0 16px 14px; font-size: .74rem; color: var(--muted); }
 
 /* ---------- Alojamientos ---------- */
@@ -449,7 +449,7 @@ details.fold[open] > summary svg { transform: rotate(90deg); }
 .onb { position: fixed; inset: 0; z-index: 90; overflow-y: auto; color: var(--white); background: linear-gradient(180deg, rgba(14, 22, 17, .82), rgba(14, 22, 17, .92)), var(--bg-img, none) center / cover no-repeat, var(--bg); padding: calc(24px + env(safe-area-inset-top, 0px)) 16px calc(24px + env(safe-area-inset-bottom, 0px)); display: flex; }
 .onb-in { width: 100%; max-width: var(--app-w); margin: auto; }
 .onb-step { display: grid; justify-items: center; gap: 10px; text-align: center; }
-.onb-shell { width: 54px; height: 48px; filter: url(#rough); }
+.onb-shell { width: 74px; height: 48px; filter: url(#rough); }
 .onb-t { margin: 0; font-family: var(--font-hand); font-weight: 900; font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1; filter: url(#rough); }
 .onb-p { margin: 0 0 6px; font-size: .9rem; color: var(--on-dark); }
 .onb-grid { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px 6px; }
@@ -484,7 +484,7 @@ details.fold[open] > summary svg { transform: rotate(90deg); }
   mask: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / calc(2 * var(--z)) 51% repeat-x, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(2 * var(--z)) 51% repeat-x;
 }
 .tk-head { display: grid; justify-items: center; text-align: center; gap: 1px; padding-bottom: 12px; border-bottom: 1.5px dashed rgba(20, 22, 19, .35); }
-.tk-shell { width: 34px; height: 30px; margin-bottom: 2px; }
+.tk-shell { width: 46px; height: 30px; margin-bottom: 2px; }
 .tk-shell svg { width: 100%; height: 100%; display: block; }
 .tk-head b { font-family: var(--font-hand); font-weight: 900; font-size: 1.5rem; line-height: 1; }
 .tk-head span { font-size: .72rem; color: var(--muted); }
@@ -554,6 +554,15 @@ details.fold[open] > summary svg { transform: rotate(90deg); }
 .poo-total { display: flex; align-items: center; gap: 10px; color: var(--white); }
 .poo-total b { font-family: var(--font-hand); font-weight: 900; font-size: 2.2rem; line-height: 1; color: var(--sun); }
 .poo-total svg { width: 40px; height: 40px; }
+
+/* Billete desde captura */
+.pass-block { display: grid; gap: 8px; }
+.pass-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.ocr-bar { height: 10px; background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.ocr-bar i { display: block; width: 4%; height: 100%; background: var(--sun); border-right: 1.5px solid var(--ink); transition: width .3s; }
+.ocr-note { margin: 0; padding: 10px 12px; background: var(--sun); border-radius: var(--r-pill); font-size: .84rem; font-weight: 500; }
+.field.read input, .field.read select { background: #FBFFC4; border-color: var(--ink); }
+.read-tag { font-size: .6rem; background: var(--sun); color: var(--ink); padding: 0 5px; border-radius: 5px; letter-spacing: .04em; }
 
 /* El tiempo */
 .wx-head { margin: 0 0 6px; font-size: .78rem; font-weight: 600; color: var(--muted); }
@@ -711,6 +720,7 @@ details.fold[open] > summary svg { transform: rotate(90deg); }
 </div>
 
 <input type="file" id="photo-input" accept="image/*" hidden>
+<input type="file" id="ticket-input" accept="image/*" hidden>
 <div class="onb" id="onb" role="dialog" aria-modal="true" aria-labelledby="onb-title" hidden>
   <div class="onb-in">
     <section class="onb-step" id="onb-1">
@@ -1418,8 +1428,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "Jorge",
    "Marta",
    "Pablo",
-   "Álvaro",
-   "Alberto"
+   "Álvaro"
   ],
   "fotoPortada": "intro"
  },
@@ -2596,7 +2605,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       out += '<path d="M' + f(B[0] + px * 1.6) + " " + f(B[1] + py * 1.6) + "L" + f(E[0] + px * w / 2) + " " + f(E[1] + py * w / 2) + "Q" + f(E[0] + dx * w * .9) + " " + f(E[1] + dy * w * .9) + " " + f(E[0] - px * w / 2) + " " + f(E[1] - py * w / 2) + "L" + f(B[0] - px * 1.6) + " " + f(B[1] - py * 1.6) + 'Z"/>';
     }
     out += '<path d="M34 80c5-3 11-4 16-3 6-1 11 0 16 3-2 5-7 8-16 8s-14-3-16-8z"/>';
-    return '<svg viewBox="0 0 100 92" fill="' + color + '" aria-hidden="true">' + out + "</svg>";
+    return '<svg viewBox="-18 -5 136 98" fill="' + color + '" aria-hidden="true">' + out + "</svg>";
   }
   function sunSVG(seed) {
     var r = rng(seed || 3), pts = [], rays = "";
@@ -2989,8 +2998,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
       (p.localizador ? '<p class="pass-note">Localizador: <b style="color:var(--ink)">' + esc(p.localizador) + "</b></p>" : '<p class="pass-note">' + esc(p.notas || "Toca para rellenar tu billete.") + "</p>") +
       "</button>";
   }
-  function editPass(t, rerender) {
+  function editPass(t, rerender, pre) {
     var p = passData(t);
+    var found = pre ? Object.keys(pre) : [];
+    if (pre) Object.keys(pre).forEach(function (k) { p[k] = pre[k]; });
     var F = [["tipo", "Tipo"], ["estado", "Estado"], ["origen", "Desde"], ["origenCod", "Código (AGP, MAD…)"], ["destino", "Hasta"], ["destinoCod", "Código"], ["sale", "Salida (hh:mm)"], ["llega", "Llegada (hh:mm)"], ["compania", "Compañía"], ["numero", "Nº vuelo o tren"], ["puerta", "Puerta o coche"], ["asiento", "Asiento"], ["localizador", "Localizador", "full"]];
     var form = '<form class="form" id="pass-form" novalidate>' + F.map(function (fl) {
       var id = "ps-" + fl[0], val = p[fl[0]] || "";
@@ -2998,9 +3009,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
       if (fl[0] === "tipo") input = '<select id="' + id + '">' + ["Avión", "Tren", "Autobús", "Coche"].map(function (o) { return "<option" + (o === val ? " selected" : "") + ">" + o + "</option>"; }).join("") + "</select>";
       else if (fl[0] === "estado") input = '<select id="' + id + '">' + ["Sin reservar", "Reservado", "Comprado"].map(function (o) { return "<option" + (o === val ? " selected" : "") + ">" + o + "</option>"; }).join("") + "</select>";
       else input = '<input id="' + id + '" value="' + esc(val) + '" autocomplete="off"' + (/Cod$/.test(fl[0]) ? ' maxlength="4" style="text-transform:uppercase"' : "") + (fl[0] === "sale" || fl[0] === "llega" ? ' inputmode="numeric" placeholder="08:40"' : "") + ">";
-      return '<div class="field ' + (fl[2] || "") + '"><label for="' + id + '">' + esc(fl[1]) + "</label>" + input + "</div>";
+      return '<div class="field ' + (fl[2] || "") + (found.indexOf(fl[0]) > -1 ? " read" : "") + '"><label for="' + id + '">' + esc(fl[1]) + (found.indexOf(fl[0]) > -1 ? ' <span class="read-tag">leído</span>' : "") + "</label>" + input + "</div>";
     }).join("") + '<div class="full links"><button class="btn primary" type="submit">Guardar billete</button><button class="btn ghost" type="button" id="ps-reset">Volver a lo del grupo</button></div></form>' +
       '<p class="hint">Cada uno rellena su propio billete: se guarda solo en este móvil.</p>';
+    if (pre) form = '<p class="ocr-note">' + (found.length ? "He leído " + found.length + (found.length === 1 ? " dato" : " datos") + " de tu captura (en amarillo). Revisa que estén bien y guarda." : "No he podido leer datos claros de la captura. Rellénalos a mano: la imagen ya está guardada.") + "</p>" + form;
     openSheet("billete de " + t.sentido.toLowerCase(), form, function (body) {
       body.querySelector("#pass-form").addEventListener("submit", function (e) {
         e.preventDefault();
@@ -3010,6 +3022,106 @@ svg.leaflet-image-layer.leaflet-interactive path {
       });
       body.querySelector("#ps-reset").addEventListener("click", function () { try { localStorage.removeItem("camino-billete-" + t.id); } catch (x) {} closeSheet(); rerender(); toast("Billete restaurado"); });
     });
+  }
+
+  // ---------- leer el billete de una captura (Tesseract.js, en el propio móvil) ----------
+  var AIRPORTS = { AGP: "Málaga", SCQ: "Santiago", MAD: "Madrid", BCN: "Barcelona", SVQ: "Sevilla", VGO: "Vigo", LCG: "A Coruña", OVD: "Asturias", BIO: "Bilbao", VLC: "Valencia", PMI: "Palma", ALC: "Alicante", XRY: "Jerez", GRX: "Granada", LGW: "Londres", STN: "Londres", LHR: "Londres", FRA: "Fráncfort", MUC: "Múnich", BER: "Berlín", DUS: "Düsseldorf", HAM: "Hamburgo", CGN: "Colonia", OPO: "Oporto", LIS: "Lisboa", PAR: "París", CDG: "París", ORY: "París", AMS: "Ámsterdam", BRU: "Bruselas", ZRH: "Zúrich", FCO: "Roma", MXP: "Milán" };
+  var STATIONS = ["Madrid", "Málaga", "Sarria", "Santiago", "Lugo", "Ourense", "Monforte", "Ponferrada", "León", "Vigo", "A Coruña", "Sevilla", "Córdoba", "Barcelona", "Valladolid", "Zamora", "Pontevedra"];
+  var CARRIERS = ["Vueling", "Iberia Express", "Iberia", "Ryanair", "Air Europa", "Binter", "Volotea", "easyJet", "Lufthansa", "Eurowings", "TAP", "Renfe", "Iryo", "Ouigo", "Alsa", "Monbus"];
+  function parseTicket(txt) {
+    var out = {}, T1 = txt.replace(/[|]/g, " "), up = T1.toUpperCase();
+    var lower = T1.toLowerCase();
+    var train = /renfe|\bave\b|alvia|iryo|ouigo|intercity|media distancia|coche\s*\d|vag[oó]n/i.test(T1);
+    var carrier = CARRIERS.find(function (c) { return lower.indexOf(c.toLowerCase()) > -1; });
+    if (carrier) out.compania = carrier;
+    if (train) out.tipo = "Tren"; else if (/boarding|embarque|vuelo|flight|gate|puerta/i.test(T1) || carrier) out.tipo = "Avión";
+    if (!train) {
+      var codes = [], m, re = /\b([A-Z]{3})\b/g;
+      while ((m = re.exec(up))) if (AIRPORTS[m[1]] && codes.indexOf(m[1]) < 0) codes.push(m[1]);
+      if (codes[0]) { out.origenCod = codes[0]; out.origen = AIRPORTS[codes[0]]; }
+      if (codes[1]) { out.destinoCod = codes[1]; out.destino = AIRPORTS[codes[1]]; }
+      var fl = up.match(/\b(IB|VY|FR|UX|NT|V7|I2|YW|EW|U2|LH|TP|EC|X3)\s?(\d{2,4})\b/);
+      if (fl) out.numero = fl[1] + " " + fl[2];
+      var gate = T1.match(/(?:puerta|gate)\s*[:.]?\s*([A-Z]?\d{1,3}[A-Z]?)\b/i); if (gate) out.puerta = gate[1].toUpperCase();
+    } else {
+      var hits = [];
+      STATIONS.forEach(function (st) { var i = lower.indexOf(st.toLowerCase()); if (i > -1) hits.push([i, st]); });
+      hits.sort(function (a, b) { return a[0] - b[0]; });
+      var seen = []; hits.forEach(function (h) { if (seen.indexOf(h[1]) < 0) seen.push(h[1]); });
+      function code(c) { return c.normalize("NFD").replace(/[̀-ͯ]/g, "").slice(0, 3).toUpperCase(); }
+      if (seen[0]) { out.origen = seen[0]; out.origenCod = code(seen[0]); }
+      if (seen[1]) { out.destino = seen[1]; out.destinoCod = code(seen[1]); }
+      var tn = T1.match(/\b(?:tren|train|n[ºo°]\s*tren)\s*[:.]?\s*(\d{3,5})\b/i) || T1.match(/\b(AVE|ALVIA|AVLO|MD|IRYO|OUIGO)\s*(\d{3,5})\b/i);
+      if (tn) out.numero = (tn[2] ? tn[1].toUpperCase() + " " + tn[2] : tn[1]);
+      var car = T1.match(/(?:coche|car|vag[oó]n)\s*[:.]?\s*(\d{1,2})\b/i); if (car) out.puerta = car[1];
+    }
+    var seat = T1.match(/(?:asiento|seat|plaza)\s*[:.]?\s*(\d{1,3}\s?[A-F]?)\b/i); if (seat) out.asiento = seat[1].replace(/\s/g, "").toUpperCase();
+    var times = [], tr = /\b([01]?\d|2[0-3])[:.h]([0-5]\d)\b/g, tm;
+    while ((tm = tr.exec(T1))) { var v = tm[1].padStart(2, "0") + ":" + tm[2]; if (times.indexOf(v) < 0) times.push(v); }
+    if (times[0]) out.sale = times[0];
+    if (times[1]) out.llega = times[1];
+    var loc = T1.match(/(?:localizador|c[oó]digo de reserva|booking (?:reference|ref)|reserva|pnr|record locator)\s*[:.#]?\s*([A-Z0-9]{5,8})\b/i);
+    if (!loc) loc = up.match(/\b(?=[A-Z0-9]{6}\b)(?=[A-Z0-9]*\d)(?=[A-Z0-9]*[A-Z])([A-Z0-9]{6})\b/);
+    if (loc) out.localizador = loc[1].toUpperCase();
+    if (Object.keys(out).length > 1) out.estado = "Comprado";
+    return out;
+  }
+  var tessLoading = null;
+  function loadTesseract() {
+    if (window.Tesseract) return Promise.resolve(window.Tesseract);
+    if (tessLoading) return tessLoading;
+    tessLoading = new Promise(function (res, rej) {
+      var sc = document.createElement("script");
+      sc.src = "https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
+      sc.onload = function () { window.Tesseract ? res(window.Tesseract) : rej(new Error("no")); };
+      sc.onerror = function () { tessLoading = null; rej(new Error("no")); };
+      document.head.appendChild(sc);
+    });
+    return tessLoading;
+  }
+  function scanTicket(t) {
+    pickPhotoHi(function (url) {
+      if (!store("camino-billete-foto-" + t.id, url)) { toast("La imagen es demasiado grande para guardarla en este móvil"); return; }
+      renderDocumentos();
+      openSheet("leyendo tu billete…", '<img class="sheet-photo" src="' + url + '" alt="" style="object-fit:contain;background:var(--ink)"><div class="ocr-bar"><i id="ocr-p"></i></div><p class="hint" id="ocr-msg">Preparando el lector… La primera vez tarda un poco más.</p>');
+      var done = false;
+      var timer = setTimeout(function () { if (!done) { done = true; editPass(t, renderDocumentos, {}); } }, 60000);
+      loadTesseract().then(function (Tz) {
+        return Tz.recognize(url, "spa+eng", { logger: function (m) {
+          var bar = $("ocr-p"), msg = $("ocr-msg");
+          if (m.status === "recognizing text" && bar) { bar.style.width = Math.round(m.progress * 100) + "%"; if (msg) msg.textContent = "Leyendo los datos del billete… " + Math.round(m.progress * 100) + "%"; }
+        } });
+      }).then(function (res) {
+        if (done) return; done = true; clearTimeout(timer);
+        editPass(t, renderDocumentos, parseTicket((res && res.data && res.data.text) || ""));
+      }).catch(function () {
+        if (done) return; done = true; clearTimeout(timer);
+        toast("No he podido leer la captura (hace falta internet la primera vez). La imagen sí está guardada.");
+        editPass(t, renderDocumentos, {});
+      });
+    });
+  }
+  function pickPhotoHi(cb) {
+    var input = $("ticket-input");
+    function onChange() {
+      input.removeEventListener("change", onChange, true);
+      var file = input.files && input.files[0]; if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        var img = new Image();
+        img.onload = function () {
+          var max = 1500, s = Math.min(1, max / Math.max(img.width, img.height));
+          var c = document.createElement("canvas"); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+          var g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+          cb(c.toDataURL("image/jpeg", .82));
+        };
+        img.onerror = function () { toast("No se ha podido abrir esa imagen"); };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+    input.addEventListener("change", onChange, true);  /* se quita sola tras usarse */
+    input.value = ""; input.click();
   }
 
   function stayDetail(a) {
@@ -3034,7 +3146,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
       ? '<div class="me-card">' + avImg(pf.nombre, "") + '<div class="who"><b>' + esc(pf.nombre.toLowerCase()) + "</b><span>Sales de " + esc(pf.sale) + " · vuelves a " + esc(pf.vuelve) + '</span></div><button class="btn small" type="button" data-perfil>' + I.edit + "Cambiar</button></div>"
       : '<div class="me-card"><div class="who"><b>¿quién eres?</b><span>Dinos quién eres y la app se adapta a ti.</span></div><button class="btn small" type="button" data-perfil>Elegir</button></div>';
     var html = '<div class="section">' + meHtml + heading("documentos", "") + docCard("dni") + "</div>";
-    html += '<div class="section">' + heading("billetes", "") + '<div style="display:grid;gap:14px">' + T.transporte.map(passHtml).join("") + '</div><p class="hint">Toca un billete para rellenarlo con tus datos.</p></div>';
+    html += '<div class="section">' + heading("billetes", "") + '<div style="display:grid;gap:18px">' + T.transporte.map(function (t) {
+      var foto = store("camino-billete-foto-" + t.id);
+      return '<div class="pass-block">' + passHtml(t) + '<div class="pass-actions">' +
+        '<button class="btn small sun" type="button" data-scan="' + t.id + '">' + I.camera + (foto ? "Cambiar captura" : "Subir captura") + "</button>" +
+        (foto ? '<button class="btn small" type="button" data-ticket="' + t.id + '">' + I.ext + "Ver billete</button>" : "") +
+        "</div></div>";
+    }).join("") + '</div><p class="hint">Sube la captura de tu billete y la app lee los datos. La imagen queda guardada para enseñarla en el control.</p></div>';
     html += '<div class="section">' + heading("dónde dormimos", "sprout") + '<div class="carousel">';
     T.alojamientos.forEach(function (a) {
       html += '<button class="town-card grain" type="button" data-stay="' + a.id + '"><img src="' + photo(a.foto) + '" alt="" loading="lazy"><span class="tag">' + esc(a.noche) + "</span>" + '<span class="tag state ' + (a.estado === "Por decidir" ? "grey" : "dark") + '">' + (a.precioPP != null ? euro(a.precioPP).replace(",00", "") : "¿?") + '</span><span class="ov"><b>' + esc(a.lugar) + "</b><span>" + esc(a.nombre) + "</span></span></button>";
@@ -3053,6 +3171,24 @@ svg.leaflet-image-layer.leaflet-interactive path {
     panel.innerHTML = html;
     bindDocCards(panel, renderDocumentos);
     panel.querySelector("[data-perfil]").addEventListener("click", function () { openOnboarding(); });
+    panel.querySelectorAll("[data-scan]").forEach(function (b) {
+      b.addEventListener("click", function () { scanTicket(T.transporte.find(function (t) { return t.id === b.getAttribute("data-scan"); })); });
+    });
+    panel.querySelectorAll("[data-ticket]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var t = T.transporte.find(function (x) { return x.id === b.getAttribute("data-ticket"); }), src = store("camino-billete-foto-" + t.id);
+        openSheet("billete de " + t.sentido.toLowerCase(), '<img class="sheet-photo full" src="' + src + '" alt="Captura del billete">' +
+          '<div class="links"><button class="btn" type="button" id="tk-edit">' + I.edit + 'Ver datos</button><button class="btn ghost" type="button" id="tk-del">' + I.trash + "Quitar captura</button></div>" +
+          '<p class="hint">Sube el brillo de la pantalla para que lean bien el código QR.</p>', function (body) {
+          body.querySelector("#tk-edit").addEventListener("click", function () { editPass(t, renderDocumentos); });
+          var del = body.querySelector("#tk-del");
+          del.addEventListener("click", function () {
+            if (!del.dataset.sure) { del.dataset.sure = "1"; del.innerHTML = I.trash + "Pulsa otra vez para quitarla"; return; }
+            try { localStorage.removeItem("camino-billete-foto-" + t.id); } catch (x) {} closeSheet(); renderDocumentos(); toast("Captura quitada");
+          });
+        });
+      });
+    });
     panel.querySelectorAll("[data-pass]").forEach(function (b) {
       b.addEventListener("click", function () { editPass(T.transporte.find(function (t) { return t.id === b.getAttribute("data-pass"); }), renderDocumentos); });
     });

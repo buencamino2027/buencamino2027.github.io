@@ -1,12 +1,13 @@
 // Service worker: guarda la app en el móvil para que funcione sin cobertura.
 // Si cambias index.html, sube el número de versión para que todos reciban la nueva.
-const CACHE = "camino-v9";
+const CACHE = "camino-v14";
 const CORE = [
   "./",
   "./index.html",
   "./trip.json",
   "./manifest.webmanifest",
-  "./icon.svg",
+  "./favicon.png",
+  "./apple-touch-icon.png",
   "./icon-192.png",
   "./icon-512.png",
   "./img/aloj-arzua.jpg",
