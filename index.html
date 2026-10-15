@@ -2704,7 +2704,94 @@ svg.leaflet-image-layer.leaflet-interactive path {
     };
     reader.readAsDataURL(file);
   });
-  function pickPhoto(cb) { photoCb = cb; $("photo-input").click(); }
+  // Imágenes en IndexedDB (en iPhone localStorage se queda corto para fotos)
+  var IDB = (function () {
+    var dbp = null;
+    function db() {
+      if (!dbp) dbp = new Promise(function (res, rej) {
+        try {
+          var rq = indexedDB.open("camino", 1);
+          rq.onupgradeneeded = function () { rq.result.createObjectStore("img"); };
+          rq.onsuccess = function () { res(rq.result); };
+          rq.onerror = function () { dbp = null; rej(rq.error); };
+        } catch (e) { dbp = null; rej(e); }
+      });
+      return dbp;
+    }
+    function tx(mode, fn) {
+      return db().then(function (d) {
+        return new Promise(function (res, rej) {
+          var t = d.transaction("img", mode), rq = fn(t.objectStore("img"));
+          t.oncomplete = function () { res(rq && rq.result); };
+          t.onerror = function () { rej(t.error); }; t.onabort = function () { rej(t.error); };
+        });
+      });
+    }
+    return {
+      put: function (k, v) { return tx("readwrite", function (st) { return st.put(v, k); }); },
+      get: function (k) { return tx("readonly", function (st) { return st.get(k); }); },
+      del: function (k) { return tx("readwrite", function (st) { return st.delete(k); }); }
+    };
+  })();
+  try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
+  function imgIndex() { return store("camino-imgs") || {}; }
+  function hasImg(k) { return !!imgIndex()[k]; }
+  function flagImg(k, on) { var ix = imgIndex(); if (on) ix[k] = 1; else delete ix[k]; store("camino-imgs", ix); }
+  function saveImg(k, url) {
+    return IDB.put(k, url).then(function () { flagImg(k, true); }, function () {
+      if (store("camino-img-" + k, url)) { flagImg(k, true); return; }
+      throw new Error("sin espacio");
+    });
+  }
+  function loadImg(k) {
+    return IDB.get(k).then(function (v) { return v || store("camino-img-" + k); }, function () { return store("camino-img-" + k); });
+  }
+  function delImg(k) { flagImg(k, false); try { localStorage.removeItem("camino-img-" + k); } catch (e) {} return IDB.del(k).catch(function () {}); }
+  function hydrateImgs(root) {
+    root.querySelectorAll("img[data-img]").forEach(function (im) {
+      loadImg(im.getAttribute("data-img")).then(function (v) { if (v) im.src = v; });
+    });
+  }
+  (function migrateImgs() {
+    ["dni", "tse", "tsi"].forEach(function (k) {
+      var d = store("camino-doc-" + k); if (!d) return;
+      var ch = false;
+      [0, 1].forEach(function (i) { if (d["foto" + i]) { saveImg("doc-" + k + "-" + i, d["foto" + i]); delete d["foto" + i]; ch = true; } });
+      if (ch) store("camino-doc-" + k, d);
+    });
+    ["ida", "vuelta"].forEach(function (id) {
+      var v = store("camino-billete-foto-" + id);
+      if (v) { saveImg("ticket-" + id, v).then(function () { try { localStorage.removeItem("camino-billete-foto-" + id); } catch (e) {} }); }
+    });
+  })();
+  // Elegir imagen: input nuevo cada vez (más fiable en iPhone), se reduce antes de guardarla
+  function pickImage(max, quality, cb) {
+    var input = document.createElement("input");
+    input.type = "file"; input.accept = "image/*";
+    input.style.cssText = "position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0";
+    document.body.appendChild(input);
+    input.addEventListener("change", function () {
+      var file = input.files && input.files[0];
+      setTimeout(function () { input.remove(); }, 1000);
+      if (!file) return;
+      toast("Procesando la imagen…");
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        try {
+          var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+          var s = Math.min(1, max / Math.max(w, h));
+          var c = document.createElement("canvas"); c.width = Math.max(1, Math.round(w * s)); c.height = Math.max(1, Math.round(h * s));
+          var g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+          URL.revokeObjectURL(url);
+          cb(c.toDataURL("image/jpeg", quality));
+        } catch (e) { toast("No se ha podido procesar esa imagen. Prueba con una captura de pantalla."); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); toast("No se ha podido abrir esa imagen. Prueba con una captura de pantalla."); };
+      img.src = url;
+    });
+    input.click();
+  }
+  function pickPhoto(cb) { pickImage(1200, .8, cb); }
 
   // ---------- cabecera ----------
   function renderHeader() {
@@ -2924,8 +3011,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       return '<div class="' + (fl[2] || "") + '"><dt>' + esc(fl[1]) + "</dt><dd" + (v ? "" : ' class="empty"') + ">" + esc(v || "sin rellenar") + "</dd></div>";
     }).join("") + "</dl>";
     html += '<div class="idphotos">' + def.photos.map(function (p, i) {
-      var src = data["foto" + i];
-      return '<button type="button" class="' + (src ? "has" : "") + '" data-doc-photo="' + key + '" data-i="' + i + '" aria-label="' + (src ? "Ver foto " : "Añadir foto ") + p.toLowerCase() + '">' + (src ? '<img src="' + src + '" alt="">' : I.camera.replace("<svg", '<svg style="width:20px;height:20px;margin:0 auto"') + "<span>" + p + "</span>") + "</button>";
+      var src = hasImg("doc-" + key + "-" + i);
+      return '<button type="button" class="' + (src ? "has" : "") + '" data-doc-photo="' + key + '" data-i="' + i + '" aria-label="' + (src ? "Ver foto " : "Añadir foto ") + p.toLowerCase() + '">' + (src ? '<img data-img="doc-' + key + "-" + i + '" alt="">' : I.camera.replace("<svg", '<svg style="width:20px;height:20px;margin:0 auto"') + "<span>" + p + "</span>") + "</button>";
     }).join("") + "</div>";
     html += '<div class="privacy">' + I.lock + "Se guarda solo en este móvil. Nadie más lo ve.</div></div>";
     return html;
@@ -2948,7 +3035,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           });
           var clr = body.querySelector("#doc-clear");
           if (clr) clr.addEventListener("click", function () {
-            if (clr.dataset.sure) { try { localStorage.removeItem("camino-doc-" + key); } catch (x) {} closeSheet(); rerender(); toast("Borrado"); }
+            if (clr.dataset.sure) { try { localStorage.removeItem("camino-doc-" + key); } catch (x) {} delImg("doc-" + key + "-0"); delImg("doc-" + key + "-1"); closeSheet(); rerender(); toast("Borrado"); }
             else { clr.dataset.sure = "1"; clr.innerHTML = I.trash + "Pulsa otra vez para borrar"; }
           });
         });
@@ -2956,19 +3043,18 @@ svg.leaflet-image-layer.leaflet-interactive path {
     });
     root.querySelectorAll("[data-doc-photo]").forEach(function (b) {
       b.addEventListener("click", function () {
-        var key = b.getAttribute("data-doc-photo"), i = b.getAttribute("data-i"), data = store("camino-doc-" + key) || {}, src = data["foto" + i];
+        var key = b.getAttribute("data-doc-photo"), i = b.getAttribute("data-i"), ik = "doc-" + key + "-" + i;
         function add() {
           pickPhoto(function (url) {
-            var d = store("camino-doc-" + key) || {}; d["foto" + i] = url;
-            if (!store("camino-doc-" + key, d)) { toast("La foto no cabe en este navegador"); return; }
-            closeSheet(); rerender(); toast("Foto guardada");
+            saveImg(ik, url).then(function () { closeSheet(); rerender(); toast("Foto guardada"); }, function () { toast("No queda espacio en este móvil para la foto"); });
           });
         }
-        if (!src) { add(); return; }
-        openSheet(DOCS[key].title, '<img class="sheet-photo full" src="' + src + '" alt="Foto del documento"><div class="links"><button class="btn" type="button" id="ph-change">' + I.camera + 'Cambiar foto</button><button class="btn ghost" type="button" id="ph-del">' + I.trash + "Quitar</button></div>", function (body) {
+        if (!hasImg(ik)) { add(); return; }
+        openSheet(DOCS[key].title, '<img class="sheet-photo full" data-img="' + ik + '" alt="Foto del documento"><div class="links"><button class="btn" type="button" id="ph-change">' + I.camera + 'Cambiar foto</button><button class="btn ghost" type="button" id="ph-del">' + I.trash + "Quitar</button></div>", function (body) {
+          hydrateImgs(body);
           body.querySelector("#ph-change").addEventListener("click", add);
           body.querySelector("#ph-del").addEventListener("click", function () {
-            var d = store("camino-doc-" + key) || {}; delete d["foto" + i]; store("camino-doc-" + key, d); closeSheet(); rerender(); toast("Foto quitada");
+            delImg(ik).then(function () { closeSheet(); rerender(); toast("Foto quitada"); });
           });
         });
       });
@@ -3081,8 +3167,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
   function scanTicket(t) {
     pickPhotoHi(function (url) {
-      if (!store("camino-billete-foto-" + t.id, url)) { toast("La imagen es demasiado grande para guardarla en este móvil"); return; }
-      renderDocumentos();
+      saveImg("ticket-" + t.id, url).then(function () { renderDocumentos(); }, function () { toast("No queda espacio en este móvil para guardar la captura"); });
       openSheet("leyendo tu billete…", '<img class="sheet-photo" src="' + url + '" alt="" style="object-fit:contain;background:var(--ink)"><div class="ocr-bar"><i id="ocr-p"></i></div><p class="hint" id="ocr-msg">Preparando el lector… La primera vez tarda un poco más.</p>');
       var done = false;
       var timer = setTimeout(function () { if (!done) { done = true; editPass(t, renderDocumentos, {}); } }, 60000);
@@ -3101,7 +3186,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       });
     });
   }
-  function pickPhotoHi(cb) {
+  function pickPhotoHi(cb) { pickImage(1600, .85, cb); }
+  function pickPhotoHiOld(cb) {
     var input = $("ticket-input");
     function onChange() {
       input.removeEventListener("change", onChange, true);
@@ -3147,7 +3233,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       : '<div class="me-card"><div class="who"><b>¿quién eres?</b><span>Dinos quién eres y la app se adapta a ti.</span></div><button class="btn small" type="button" data-perfil>Elegir</button></div>';
     var html = '<div class="section">' + meHtml + heading("documentos", "") + docCard("dni") + "</div>";
     html += '<div class="section">' + heading("billetes", "") + '<div style="display:grid;gap:18px">' + T.transporte.map(function (t) {
-      var foto = store("camino-billete-foto-" + t.id);
+      var foto = hasImg("ticket-" + t.id);
       return '<div class="pass-block">' + passHtml(t) + '<div class="pass-actions">' +
         '<button class="btn small sun" type="button" data-scan="' + t.id + '">' + I.camera + (foto ? "Cambiar captura" : "Subir captura") + "</button>" +
         (foto ? '<button class="btn small" type="button" data-ticket="' + t.id + '">' + I.ext + "Ver billete</button>" : "") +
@@ -3170,21 +3256,23 @@ svg.leaflet-image-layer.leaflet-interactive path {
     var panel = $("panel-documentos");
     panel.innerHTML = html;
     bindDocCards(panel, renderDocumentos);
+    hydrateImgs(panel);
     panel.querySelector("[data-perfil]").addEventListener("click", function () { openOnboarding(); });
     panel.querySelectorAll("[data-scan]").forEach(function (b) {
       b.addEventListener("click", function () { scanTicket(T.transporte.find(function (t) { return t.id === b.getAttribute("data-scan"); })); });
     });
     panel.querySelectorAll("[data-ticket]").forEach(function (b) {
       b.addEventListener("click", function () {
-        var t = T.transporte.find(function (x) { return x.id === b.getAttribute("data-ticket"); }), src = store("camino-billete-foto-" + t.id);
-        openSheet("billete de " + t.sentido.toLowerCase(), '<img class="sheet-photo full" src="' + src + '" alt="Captura del billete">' +
+        var t = T.transporte.find(function (x) { return x.id === b.getAttribute("data-ticket"); });
+        openSheet("billete de " + t.sentido.toLowerCase(), '<img class="sheet-photo full" data-img="ticket-' + t.id + '" alt="Captura del billete">' +
           '<div class="links"><button class="btn" type="button" id="tk-edit">' + I.edit + 'Ver datos</button><button class="btn ghost" type="button" id="tk-del">' + I.trash + "Quitar captura</button></div>" +
           '<p class="hint">Sube el brillo de la pantalla para que lean bien el código QR.</p>', function (body) {
+          hydrateImgs(body);
           body.querySelector("#tk-edit").addEventListener("click", function () { editPass(t, renderDocumentos); });
           var del = body.querySelector("#tk-del");
           del.addEventListener("click", function () {
             if (!del.dataset.sure) { del.dataset.sure = "1"; del.innerHTML = I.trash + "Pulsa otra vez para quitarla"; return; }
-            try { localStorage.removeItem("camino-billete-foto-" + t.id); } catch (x) {} closeSheet(); renderDocumentos(); toast("Captura quitada");
+            delImg("ticket-" + t.id).then(function () { closeSheet(); renderDocumentos(); toast("Captura quitada"); });
           });
         });
       });
@@ -3340,6 +3428,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     var panel = $("panel-emergencias");
     panel.innerHTML = html;
     bindDocCards(panel, renderEmergencias);
+    hydrateImgs(panel);
     panel.querySelectorAll("[data-pend]").forEach(function (cb) {
       cb.addEventListener("change", function () { var s = store("camino-pendientes") || {}; s[cb.getAttribute("data-pend")] = cb.checked; store("camino-pendientes", s); });
     });
