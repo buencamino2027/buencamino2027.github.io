@@ -350,6 +350,12 @@
         "Apartamento 2 · Dormitorio 1: 2 camas individuales",
         "Apartamento 2 · Dormitorio 2: 1 cama doble",
         "Apartamento 2 · Salón: 1 sofá cama"
+      ],
+      "fotos": [
+        "aloj-sarria",
+        "aloj-sarria-1",
+        "aloj-sarria-2",
+        "aloj-sarria-3"
       ]
     },
     {
@@ -397,6 +403,12 @@
         "Apartamento 1: 1 cama doble grande + 1 sofá cama",
         "Apartamento 2: 1 cama doble grande + 1 sofá cama",
         "Apartamento 3: 1 cama doble grande + 1 sofá cama"
+      ],
+      "fotos": [
+        "aloj-palas",
+        "aloj-palas-1",
+        "aloj-palas-2",
+        "aloj-palas-3"
       ]
     },
     {
@@ -411,7 +423,7 @@
       "booking": "https://www.booking.com/hotel/es/del-peregrino-arzua.es.html",
       "mapa": "Del Peregrino, Rúa de Ramón Franco 7, Arzúa",
       "notas": "Muy céntrico, pero con malas reseñas (6,6 en Booking). El Airbnb de 165 € lo rechazó el anfitrión. Es cancelable: buscar alternativa.",
-      "foto": "g-pasos",
+      "foto": "aloj-arzua-1",
       "total": 275,
       "via": "Booking",
       "reservadoPor": "Pablo",
@@ -420,6 +432,11 @@
       "camas": [
         "Tipos que tiene: triple (3 camas individuales), doble con 2 camas y doble con cama de matrimonio",
         "Para 10 lo más probable: 2 triples + 2 dobles (confirmar con Pablo)"
+      ],
+      "fotos": [
+        "aloj-arzua-1",
+        "aloj-arzua-2",
+        "aloj-arzua-3"
       ]
     },
     {
@@ -434,7 +451,7 @@
       "booking": "https://www.airbnb.es/rooms/1211743365467407359",
       "mapa": "Vilachá, O Pino, A Coruña",
       "notas": "Casa de campo a 100 m del Camino, unos 2 km después de O Pedrouzo (al día siguiente se anda menos). Llegada de 16:00 a 18:00, salida antes de las 11:00. Nota 5,0.",
-      "foto": "g-verde",
+      "foto": "aloj-pedrouzo-1",
       "total": 389,
       "via": "Airbnb",
       "reservadoPor": "Pablo",
@@ -444,7 +461,12 @@
         "6 camas en total para 10 personas",
         "Cocina, lavadora, barbacoa, patio y chimenea"
       ],
-      "aviso": "Fuera del pueblo (~2 km) · buscando otro"
+      "aviso": "Fuera del pueblo (~2 km) · buscando otro",
+      "fotos": [
+        "aloj-pedrouzo-1",
+        "aloj-pedrouzo-2",
+        "aloj-pedrouzo-3"
+      ]
     },
     {
       "id": "santiago",
@@ -458,7 +480,7 @@
       "booking": "https://www.booking.com/hotel/es/pension-da-sela.es.html",
       "mapa": "Pensión da Sela, Rúa das Fontiñas 82, Santiago de Compostela",
       "notas": "A unos 25–30 min andando de la Catedral (1,4 km). Nota 9,2 en Booking. Abajo hay una pulpería.",
-      "foto": "santiago",
+      "foto": "aloj-santiago-1",
       "total": 508,
       "via": "Booking",
       "reservadoPor": "Pablo",
@@ -467,6 +489,11 @@
       "camas": [
         "Tipos que tiene: familiar (1 cama doble + 1 litera), doble (1 o 2 camas) y estudio con cama doble",
         "Pide a Pablo la confirmación para saber el reparto exacto"
+      ],
+      "fotos": [
+        "aloj-santiago-1",
+        "aloj-santiago-2",
+        "aloj-santiago-3"
       ]
     }
   ],

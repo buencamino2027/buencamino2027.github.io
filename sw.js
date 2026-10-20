@@ -1,6 +1,6 @@
 // Service worker: guarda la app en el móvil para que funcione sin cobertura.
 // Si cambias index.html, sube el número de versión para que todos reciban la nueva.
-const CACHE = "camino-v22";
+const CACHE = "camino-v23";
 const CORE = [
   "./",
   "./index.html",
@@ -11,10 +11,22 @@ const CORE = [
   "./apple-touch-icon.png",
   "./icon-192.png",
   "./icon-512.png",
-  "./img/aloj-arzua.jpg",
+  "./img/aloj-arzua-1.jpg",
+  "./img/aloj-arzua-2.jpg",
+  "./img/aloj-arzua-3.jpg",
+  "./img/aloj-palas-1.jpg",
+  "./img/aloj-palas-2.jpg",
+  "./img/aloj-palas-3.jpg",
   "./img/aloj-palas.jpg",
-  "./img/aloj-pedrouzo.jpg",
-  "./img/aloj-portomarin.jpg",
+  "./img/aloj-pedrouzo-1.jpg",
+  "./img/aloj-pedrouzo-2.jpg",
+  "./img/aloj-pedrouzo-3.jpg",
+  "./img/aloj-santiago-1.jpg",
+  "./img/aloj-santiago-2.jpg",
+  "./img/aloj-santiago-3.jpg",
+  "./img/aloj-sarria-1.jpg",
+  "./img/aloj-sarria-2.jpg",
+  "./img/aloj-sarria-3.jpg",
   "./img/aloj-sarria.jpg",
   "./img/fondo.jpg",
   "./img/g-botas.jpg",
