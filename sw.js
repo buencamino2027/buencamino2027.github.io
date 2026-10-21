@@ -1,6 +1,6 @@
 // Service worker: guarda la app en el móvil para que funcione sin cobertura.
 // Si cambias index.html, sube el número de versión para que todos reciban la nueva.
-const CACHE = "camino-v23";
+const CACHE = "camino-v24";
 const CORE = [
   "./",
   "./index.html",

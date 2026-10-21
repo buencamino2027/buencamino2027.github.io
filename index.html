@@ -424,7 +424,7 @@ details.fold[open] > summary svg { transform: rotate(90deg); }
 .sheet-photo.full { height: auto; max-height: 60vh; object-fit: contain; background: var(--ink); }
 .sheet .card { box-shadow: none; }
 
-.toast { position: fixed; z-index: 120; left: 50%; transform: translateX(-50%) rotate(-1deg); bottom: calc(var(--tabbar-h) + 90px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--white); padding: 10px 16px; border-radius: 18px 14px 20px 15px; font-size: .86rem; font-weight: 500; max-width: calc(100% - 32px); }
+.toast { pointer-events: none;  position: fixed; z-index: 120; left: 50%; transform: translateX(-50%) rotate(-1deg); bottom: calc(var(--tabbar-h) + 90px + env(safe-area-inset-bottom, 0px)); background: var(--ink); color: var(--white); padding: 10px 16px; border-radius: 18px 14px 20px 15px; font-size: .86rem; font-weight: 500; max-width: calc(100% - 32px); }
 
 /* Gastos tipo Tricount */
 .exp-top { display: flex; align-items: center; gap: 12px; }
@@ -598,6 +598,42 @@ details.fold[open] > summary svg { transform: rotate(90deg); }
 .stay-gallery::-webkit-scrollbar { display: none; }
 .stay-gallery img { flex: 0 0 88%; height: 220px; object-fit: cover; border-radius: 18px 14px 20px 16px; scroll-snap-align: center; }
 .gal-hint { margin: 0 0 10px; font-size: .72rem; opacity: .7; text-align: center; }
+.stay-chip { display: inline-flex; align-items: center; gap: 4px; border: 0; background: var(--sun); color: var(--ink); font-size: .72rem; font-weight: 600; border-radius: var(--r-pill); padding: 3px 9px; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.my-bed { font-size: .78rem; font-weight: 600; background: rgba(255,255,255,.7); border-radius: var(--r-pill); padding: 2px 8px; }
+.plan { margin: 12px 0; }
+.plan-h { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0 2px 8px; }
+.plan-h h4 { margin: 0; font-family: var(--font-hand); font-size: 1.25rem; }
+.plan-h span { font-size: .72rem; opacity: .75; }
+.plan-note { font-size: .74rem; margin: 0 2px 10px; opacity: .85; }
+.plan-note.warn { color: #8A5A00; font-weight: 600; opacity: 1; }
+.unit { background: var(--white); border-radius: 22px 18px 24px 20px; padding: 10px; margin-bottom: 10px; box-shadow: var(--shadow); }
+.unit-h { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; margin: 2px 4px 8px; }
+.unit-h svg { width: 20px; height: 20px; color: var(--moss); }
+.unit-h small { font-weight: 500; opacity: .65; font-size: .72rem; margin-left: auto; }
+.rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.room { background: #F3F1EA; border: 1.5px dashed rgba(31,42,36,.18); border-radius: 16px 13px 18px 14px; padding: 8px; }
+.room-h { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; opacity: .7; margin-bottom: 6px; }
+.beds { display: flex; flex-wrap: wrap; gap: 6px; }
+.bed { position: relative; border-radius: 12px 10px 13px 11px; padding: 14px 6px 6px; background: #fff; border: 2px solid #1F2A24; min-width: 54px; }
+.bed::before { content: ""; position: absolute; left: 6px; right: 6px; top: 4px; height: 6px; border-radius: 4px; background: repeating-linear-gradient(90deg, #DCE8C4 0 18px, transparent 18px 22px); }
+.bed.t-doble, .bed.t-grande { min-width: 96px; background: #FFFDE6; }
+.bed.t-grande { border-width: 3px; }
+.bed.t-sofa { background: #EDE6F6; border-style: dashed; }
+.bed.t-sofa::before { background: #CDBBE6; }
+.bed.t-litera { background: #E5F0F8; }
+.bed.t-litera .slots { flex-direction: column; }
+.bed-l { display: block; text-align: center; font-size: .62rem; font-weight: 600; opacity: .7; margin-top: 4px; white-space: nowrap; }
+.slots { display: flex; gap: 4px; justify-content: center; }
+.slot { width: 44px; min-height: 52px; border: 0; background: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 1px; border-radius: 12px; touch-action: manipulation; }
+.slot.full { touch-action: none; cursor: grab; -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+.slot .sav { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,.25); pointer-events: none; }
+.slot .nm { font-size: .6rem; font-weight: 600; line-height: 1.1; max-width: 46px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; pointer-events: none; }
+.slot.empty .sav { box-shadow: none; border: 2px dashed rgba(31,42,36,.3); background: transparent; }
+.slot.sel { background: var(--sun); outline: 2px solid var(--ink); }
+.slot.target { background: rgba(246,255,28,.55); }
+.slot.me .sav { outline: 3px solid var(--sun); outline-offset: 1px; }
+.drag-ghost { position: fixed; z-index: 3000; width: 46px; height: 46px; border-radius: 50%; pointer-events: none; box-shadow: 0 8px 20px rgba(0,0,0,.35); transform: translate(-50%, -60%) scale(1.15); }
+.plan-sync { font-size: .7rem; opacity: .7; margin: 4px 2px 0; }
 .card.rooms h4 { margin: 0 0 8px; font-size: .95rem; font-weight: 700; }
 .card.rooms ul { margin: 0; padding-left: 18px; }
 .card.rooms li { margin: 3px 0; font-size: .88rem; }
@@ -1500,7 +1536,29 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "Pablo",
    "Álvaro"
   ],
-  "fotoPortada": "intro"
+  "fotoPortada": "intro",
+  "parejas": [
+   [
+    "Fran",
+    "Marina"
+   ],
+   [
+    "Marta",
+    "Pablo"
+   ],
+   [
+    "Janina",
+    "Javi"
+   ],
+   [
+    "Ana",
+    "Jorge"
+   ],
+   [
+    "Sandra",
+    "Álvaro"
+   ]
+  ]
  },
  "pendientes": [
   {
@@ -1839,7 +1897,129 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "aloj-sarria-1",
     "aloj-sarria-2",
     "aloj-sarria-3"
-   ]
+   ],
+   "plano": {
+    "unidades": [
+     {
+      "id": "A",
+      "nombre": "Apartamento 1",
+      "rooms": [
+       {
+        "id": "a1",
+        "nombre": "Dormitorio 1",
+        "camas": [
+         {
+          "id": "b1",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "b2",
+          "tipo": "individual",
+          "plazas": 1
+         }
+        ]
+       },
+       {
+        "id": "a2",
+        "nombre": "Dormitorio 2",
+        "camas": [
+         {
+          "id": "b3",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "a3",
+        "nombre": "Salón",
+        "camas": [
+         {
+          "id": "b4",
+          "tipo": "sofa",
+          "plazas": 1
+         }
+        ]
+       }
+      ],
+      "info": "2 baños · cocina"
+     },
+     {
+      "id": "B",
+      "nombre": "Apartamento 2",
+      "rooms": [
+       {
+        "id": "b_1",
+        "nombre": "Dormitorio 1",
+        "camas": [
+         {
+          "id": "b5",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "b6",
+          "tipo": "individual",
+          "plazas": 1
+         }
+        ]
+       },
+       {
+        "id": "b_2",
+        "nombre": "Dormitorio 2",
+        "camas": [
+         {
+          "id": "b7",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "b_3",
+        "nombre": "Salón",
+        "camas": [
+         {
+          "id": "b8",
+          "tipo": "sofa",
+          "plazas": 1
+         }
+        ]
+       }
+      ],
+      "info": "2 baños · cocina"
+     }
+    ]
+   },
+   "reparto": {
+    "b3": [
+     "Fran",
+     "Marina"
+    ],
+    "b1": [
+     "Marta"
+    ],
+    "b2": [
+     "Pablo"
+    ],
+    "b4": [
+     "Sandra"
+    ],
+    "b7": [
+     "Janina",
+     "Javi"
+    ],
+    "b5": [
+     "Ana"
+    ],
+    "b6": [
+     "Jorge"
+    ],
+    "b8": [
+     "Álvaro"
+    ]
+   }
   },
   {
    "id": "portomarin",
@@ -1862,7 +2042,103 @@ svg.leaflet-image-layer.leaflet-interactive path {
    "camas": [
     "3 habitaciones dobles",
     "1 habitación de 4 camas"
-   ]
+   ],
+   "plano": {
+    "unidades": [
+     {
+      "id": "P",
+      "nombre": "Pensión Manuel",
+      "rooms": [
+       {
+        "id": "h1",
+        "nombre": "Habitación doble 1",
+        "camas": [
+         {
+          "id": "d1",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "h2",
+        "nombre": "Habitación doble 2",
+        "camas": [
+         {
+          "id": "d2",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "h3",
+        "nombre": "Habitación doble 3",
+        "camas": [
+         {
+          "id": "d3",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "h4",
+        "nombre": "Habitación de 4",
+        "camas": [
+         {
+          "id": "i1",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "i2",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "i3",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "i4",
+          "tipo": "individual",
+          "plazas": 1
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "estimado": "Las dobles pueden ser de matrimonio o de 2 camas: confirmar al llegar."
+   },
+   "reparto": {
+    "d1": [
+     "Sandra",
+     "Álvaro"
+    ],
+    "d2": [
+     "Marta",
+     "Pablo"
+    ],
+    "d3": [
+     "Ana",
+     "Jorge"
+    ],
+    "i1": [
+     "Fran"
+    ],
+    "i2": [
+     "Marina"
+    ],
+    "i3": [
+     "Janina"
+    ],
+    "i4": [
+     "Javi"
+    ]
+   }
   },
   {
    "id": "palas",
@@ -1892,7 +2168,122 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "aloj-palas-1",
     "aloj-palas-2",
     "aloj-palas-3"
-   ]
+   ],
+   "plano": {
+    "unidades": [
+     {
+      "id": "A1",
+      "nombre": "Apartamento 1",
+      "rooms": [
+       {
+        "id": "p1",
+        "nombre": "Dormitorio",
+        "camas": [
+         {
+          "id": "g1",
+          "tipo": "grande",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "p1s",
+        "nombre": "Salón",
+        "camas": [
+         {
+          "id": "s1",
+          "tipo": "sofa",
+          "plazas": 2
+         }
+        ]
+       }
+      ],
+      "info": "hasta 4 · baño · cocina"
+     },
+     {
+      "id": "A2",
+      "nombre": "Apartamento 2",
+      "rooms": [
+       {
+        "id": "p2",
+        "nombre": "Dormitorio",
+        "camas": [
+         {
+          "id": "g2",
+          "tipo": "grande",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "p2s",
+        "nombre": "Salón",
+        "camas": [
+         {
+          "id": "s2",
+          "tipo": "sofa",
+          "plazas": 1
+         }
+        ]
+       }
+      ],
+      "info": "hasta 3 · baño · cocina"
+     },
+     {
+      "id": "A3",
+      "nombre": "Apartamento 3",
+      "rooms": [
+       {
+        "id": "p3",
+        "nombre": "Dormitorio",
+        "camas": [
+         {
+          "id": "g3",
+          "tipo": "grande",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "p3s",
+        "nombre": "Salón",
+        "camas": [
+         {
+          "id": "s3",
+          "tipo": "sofa",
+          "plazas": 1
+         }
+        ]
+       }
+      ],
+      "info": "hasta 3 · baño · cocina"
+     }
+    ]
+   },
+   "reparto": {
+    "g1": [
+     "Fran",
+     "Marina"
+    ],
+    "s1": [
+     "Marta",
+     "Pablo"
+    ],
+    "g2": [
+     "Sandra",
+     "Álvaro"
+    ],
+    "s2": [
+     "Ana"
+    ],
+    "g3": [
+     "Janina",
+     "Javi"
+    ],
+    "s3": [
+     "Jorge"
+    ]
+   }
   },
   {
    "id": "arzua",
@@ -1920,7 +2311,111 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "aloj-arzua-1",
     "aloj-arzua-2",
     "aloj-arzua-3"
-   ]
+   ],
+   "plano": {
+    "unidades": [
+     {
+      "id": "H",
+      "nombre": "Del Peregrino",
+      "rooms": [
+       {
+        "id": "t1",
+        "nombre": "Triple 1",
+        "camas": [
+         {
+          "id": "t1a",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "t1b",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "t1c",
+          "tipo": "individual",
+          "plazas": 1
+         }
+        ]
+       },
+       {
+        "id": "t2",
+        "nombre": "Triple 2",
+        "camas": [
+         {
+          "id": "t2a",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "t2b",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "t2c",
+          "tipo": "individual",
+          "plazas": 1
+         }
+        ]
+       },
+       {
+        "id": "q1",
+        "nombre": "Doble 1",
+        "camas": [
+         {
+          "id": "q1a",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "q2",
+        "nombre": "Doble 2",
+        "camas": [
+         {
+          "id": "q2a",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       }
+      ],
+      "info": "cada habitación con baño"
+     }
+    ],
+    "estimado": "Reparto supuesto (2 triples + 2 dobles): confirmar con Pablo."
+   },
+   "reparto": {
+    "q1a": [
+     "Ana",
+     "Jorge"
+    ],
+    "q2a": [
+     "Marta",
+     "Pablo"
+    ],
+    "t1a": [
+     "Janina"
+    ],
+    "t1b": [
+     "Javi"
+    ],
+    "t1c": [
+     "Fran"
+    ],
+    "t2a": [
+     "Sandra"
+    ],
+    "t2b": [
+     "Álvaro"
+    ],
+    "t2c": [
+     "Marina"
+    ]
+   }
   },
   {
    "id": "pedrouzo",
@@ -1949,7 +2444,103 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "aloj-pedrouzo-1",
     "aloj-pedrouzo-2",
     "aloj-pedrouzo-3"
-   ]
+   ],
+   "plano": {
+    "unidades": [
+     {
+      "id": "C",
+      "nombre": "O Lar da Crega",
+      "rooms": [
+       {
+        "id": "r1",
+        "nombre": "Dormitorio 1",
+        "camas": [
+         {
+          "id": "e1",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "r2",
+        "nombre": "Dormitorio 2",
+        "camas": [
+         {
+          "id": "e2",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "r3",
+        "nombre": "Dormitorio 3",
+        "camas": [
+         {
+          "id": "e3",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "r4",
+        "nombre": "Dormitorio 4",
+        "camas": [
+         {
+          "id": "e4",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "r5",
+        "nombre": "Dormitorio 5",
+        "camas": [
+         {
+          "id": "e5",
+          "tipo": "individual",
+          "plazas": 1
+         },
+         {
+          "id": "e6",
+          "tipo": "individual",
+          "plazas": 1
+         }
+        ]
+       }
+      ],
+      "info": "3 baños · cocina · jardín"
+     }
+    ],
+    "estimado": "Airbnb dice 5 dormitorios y 6 camas: supongo 4 dobles + 1 con 2 individuales."
+   },
+   "reparto": {
+    "e1": [
+     "Fran",
+     "Marina"
+    ],
+    "e2": [
+     "Sandra",
+     "Álvaro"
+    ],
+    "e3": [
+     "Ana",
+     "Jorge"
+    ],
+    "e4": [
+     "Marta",
+     "Pablo"
+    ],
+    "e5": [
+     "Janina"
+    ],
+    "e6": [
+     "Javi"
+    ]
+   }
   },
   {
    "id": "santiago",
@@ -1977,7 +2568,84 @@ svg.leaflet-image-layer.leaflet-interactive path {
     "aloj-santiago-1",
     "aloj-santiago-2",
     "aloj-santiago-3"
-   ]
+   ],
+   "plano": {
+    "unidades": [
+     {
+      "id": "S",
+      "nombre": "Pensión da Sela",
+      "rooms": [
+       {
+        "id": "f1",
+        "nombre": "Familiar 1",
+        "camas": [
+         {
+          "id": "f1d",
+          "tipo": "doble",
+          "plazas": 2
+         },
+         {
+          "id": "f1l",
+          "tipo": "litera",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "f2",
+        "nombre": "Familiar 2",
+        "camas": [
+         {
+          "id": "f2d",
+          "tipo": "doble",
+          "plazas": 2
+         },
+         {
+          "id": "f2l",
+          "tipo": "litera",
+          "plazas": 2
+         }
+        ]
+       },
+       {
+        "id": "f3",
+        "nombre": "Doble",
+        "camas": [
+         {
+          "id": "f3d",
+          "tipo": "doble",
+          "plazas": 2
+         }
+        ]
+       }
+      ],
+      "info": "todas con baño"
+     }
+    ],
+    "estimado": "Reparto supuesto (2 familiares + 1 doble): confirmar con Pablo."
+   },
+   "reparto": {
+    "f1d": [
+     "Fran",
+     "Marina"
+    ],
+    "f1l": [
+     "Marta",
+     "Pablo"
+    ],
+    "f2d": [
+     "Sandra",
+     "Álvaro"
+    ],
+    "f2l": [
+     "Janina",
+     "Javi"
+    ],
+    "f3d": [
+     "Ana",
+     "Jorge"
+    ]
+   }
   }
  ],
  "seguro": {
@@ -2799,6 +3467,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   }
 
   var I = {
+    home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2M5.6 9.6c.2 3.6.2 7.1 0 10.6 4.3.2 8.5.2 12.8 0-.2-3.5-.2-7 0-10.6M10 20.1v-5.4h4v5.4"/></svg>',
     download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></svg>',
     ext: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.8 4.2c2-.1 4-.1 6 .1.2 2 .2 4 .1 6M19.6 4.5c-3 3-6 5.9-8.9 8.9"/><path d="M18 14.2c.1 1.7.1 3.4-.1 5.1-4.2.3-8.5.3-12.8-.1-.3-4.2-.3-8.5 0-12.8 1.6-.1 3.3-.1 4.9 0"/></svg>',
     pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2c-2.6-2.4-7.1-6.7-7-11.2.1-3.9 3.2-6.8 7-6.8s7 2.9 7 6.8c0 4.5-4.4 8.8-7 11.2z"/><path d="M12 7.6c1.4 0 2.5 1.1 2.4 2.5-.1 1.3-1.1 2.3-2.5 2.3s-2.4-1.1-2.3-2.4c0-1.4 1-2.4 2.4-2.4z"/></svg>',
@@ -3064,7 +3733,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     if (d.horario && d.horario.length) more += '<ul class="timeline">' + d.horario.map(function (h) { return '<li><span class="h">' + esc(h.hora) + "</span><span>" + esc(h.texto) + "</span></li>"; }).join("") + "</ul>";
     if (d.notas && d.notas.length) more += '<ul class="notes">' + d.notas.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul>";
     var a = stays[d.alojamiento];
-    if (a) more += '<div class="stay-line">' + I.bed.replace("<svg", '<svg style="width:18px;height:18px;color:var(--moss)"') + "<span>Noche en <b>" + esc(a.nombre) + "</b></span>" + stateTag(a.estado) + '<a class="btn small" href="' + mapsSearch(a.mapa) + '" target="_blank" rel="noopener">' + I.pin + "Mapa</a></div>";
+    if (a) {
+      var mine = myBed(a);
+      more += '<div class="stay-line">' + I.bed.replace("<svg", '<svg style="width:18px;height:18px;color:var(--moss)"') + "<span>Noche en <b>" + esc(a.nombre) + "</b></span>" + stateTag(a.estado) +
+        (mine ? '<span class="my-bed">Tú: ' + esc(mine) + "</span>" : "") +
+        '<button class="btn small sun" type="button" data-open-stay="' + a.id + '">' + I.bed.replace("<svg", '<svg style="width:16px;height:16px"') + "Camas y fotos</button>" +
+        '<a class="btn small" href="' + mapsSearch(a.mapa) + '" target="_blank" rel="noopener">' + I.pin + "Mapa</a></div>";
+      tags += '<button class="stay-chip" type="button" data-open-stay="' + a.id + '">' + I.bed.replace("<svg", '<svg style="width:14px;height:14px"') + esc(a.nombre.replace(/ \((Airbnb|dp85)\)/, "")) + "</button>";
+    }
     return '<div class="tl-row' + (travel ? " travel" : "") + '" data-day="' + d.fecha + '" id="dia-' + d.fecha + '">' +
       '<div class="tl-date"><span class="dot"><b class="num">' + dt.getDate() + "</b><small>" + MONTH[dt.getMonth()] + '</small></span><span class="dow">' + DOW[dt.getDay()] + "</span></div>" +
       '<div class="swipe-wrap"><div class="swipe-bg">' + I.check + "conseguido</div>" +
@@ -3371,6 +4047,158 @@ svg.leaflet-image-layer.leaflet-interactive path {
     input.value = ""; input.click();
   }
 
+  // ---------- quién duerme dónde (compartido por Firebase en /camas) ----------
+  var CAMAS = {}, camasOnline = false, camasES = null;
+  function slotList(a) {
+    var out = [];
+    (a.plano ? a.plano.unidades : []).forEach(function (u) { u.rooms.forEach(function (rm) { rm.camas.forEach(function (b) { for (var i = 0; i < b.plazas; i++) out.push({ id: b.id + "." + i, bed: b, room: rm, unit: u }); }); }); });
+    return out;
+  }
+  function defaultMap(a) { var m = {}; Object.keys(a.reparto || {}).forEach(function (b) { a.reparto[b].forEach(function (n, i) { m[b + "." + i] = n; }); }); return m; }
+  function cleanMap(a, m) {
+    var valid = {}, seen = {}, out = {}, ppl = T.viaje.viajeros;
+    slotList(a).forEach(function (s) { valid[s.id] = 1; });
+    Object.keys(m || {}).forEach(function (k) { var n = m[k]; if (valid[k] && ppl.indexOf(n) > -1 && !seen[n]) { seen[n] = 1; out[k] = n; } });
+    // quien falte vuelve a su sitio por defecto o al primer hueco libre
+    var d = defaultMap(a), free = slotList(a).map(function (s) { return s.id; }).filter(function (k) { return !out[k]; });
+    ppl.forEach(function (n) {
+      if (seen[n]) return;
+      var dk = Object.keys(d).find(function (k) { return d[k] === n; });
+      var k = dk && !out[dk] ? dk : free.find(function (f) { return !out[f]; });
+      if (k) { out[k] = n; seen[n] = 1; }
+    });
+    return out;
+  }
+  function camasMap(a) {
+    var local = store("camino-camas-" + a.id), pend = (store("camino-camas-pend") || {})[a.id];
+    var m = pend && local ? local : (CAMAS[a.id] || local || defaultMap(a));
+    return cleanMap(a, m);
+  }
+  function bedName(b) { return { doble: "Cama doble", grande: "Cama grande", individual: "Individual", sofa: "Sofá cama", litera: "Litera" }[b.tipo] || b.tipo; }
+  function myBed(a) {
+    var pf = me(); if (!pf || !a || !a.plano) return "";
+    var m = camasMap(a), k = Object.keys(m).find(function (x) { return m[x] === pf.nombre; }); if (!k) return "";
+    var s = slotList(a).find(function (x) { return x.id === k; });
+    var pl = s.bed.tipo === "litera" ? (k.slice(-1) === "0" ? " (abajo)" : " (arriba)") : "";
+    return (a.plano.unidades.length > 1 ? s.unit.nombre + " · " : "") + s.room.nombre + " · " + bedName(s.bed).toLowerCase() + pl;
+  }
+  function planHtml(a) {
+    var m = camasMap(a), pf = me(), myName = pf && pf.nombre;
+    var html = '<div class="plan" data-plan="' + a.id + '"><div class="plan-h"><h4>quién duerme dónde</h4><span>' + (POO_DB ? "compartido con el grupo" : "solo en este móvil") + "</span></div>";
+    if (a.plano.estimado) html += '<p class="plan-note warn">⚠ ' + esc(a.plano.estimado) + "</p>";
+    html += '<p class="plan-note">Toca a alguien y luego otro sitio para cambiarlo, o arrástralo.</p>';
+    a.plano.unidades.forEach(function (u) {
+      html += '<div class="unit"><div class="unit-h">' + I.home + esc(u.nombre) + (u.info ? "<small>" + esc(u.info) + "</small>" : "") + '</div><div class="rooms-grid">';
+      u.rooms.forEach(function (rm) {
+        html += '<div class="room"><div class="room-h">' + esc(rm.nombre) + '</div><div class="beds">';
+        rm.camas.forEach(function (b) {
+          html += '<div class="bed t-' + b.tipo + '"><div class="slots">';
+          for (var i = 0; i < b.plazas; i++) {
+            var k = b.id + "." + i, n = m[k];
+            html += '<button type="button" class="slot ' + (n ? "full" : "empty") + (n && n === myName ? " me" : "") + '" data-slot="' + k + '" aria-label="' + esc(bedName(b) + (n ? ": " + n : ": libre")) + '">' +
+              (n ? '<img class="sav" src="' + avatar(n) + '" alt="" draggable="false">' : '<span class="sav"></span>') + '<span class="nm">' + esc(n || "libre") + "</span></button>";
+          }
+          html += '</div><span class="bed-l">' + bedName(b) + (b.tipo === "sofa" && b.plazas > 1 ? " · 2" : "") + "</span></div>";
+        });
+        html += "</div></div>";
+      });
+      html += "</div></div>";
+    });
+    return html + '<p class="plan-sync" data-sync></p></div>';
+  }
+  function saveCamas(a, m) {
+    store("camino-camas-" + a.id, m);
+    var pend = store("camino-camas-pend") || {}; pend[a.id] = 1; store("camino-camas-pend", pend);
+    camasFlush();
+  }
+  function camasFlush() {
+    if (!POO_DB) return;
+    var pend = store("camino-camas-pend") || {};
+    Object.keys(pend).forEach(function (id) {
+      var m = store("camino-camas-" + id); if (!m) return;
+      fetch(POO_DB + "/camas/" + id + ".json", { method: "PUT", body: JSON.stringify(JSON.stringify(m)) }).then(function (r) {
+        if (!r.ok) throw r.status;
+        var p2 = store("camino-camas-pend") || {}; delete p2[id]; store("camino-camas-pend", p2); CAMAS[id] = m; camasOnline = true;
+      }).catch(function () { camasOnline = false; });
+    });
+  }
+  function camasApply(path, data) {
+    function parse(v) { try { return typeof v === "string" ? JSON.parse(v) : null; } catch (e) { return null; } }
+    if (path === "/") { CAMAS = {}; Object.keys(data || {}).forEach(function (k) { var v = parse(data[k]); if (v) CAMAS[k] = v; }); }
+    else { var k = path.replace(/^\//, "").split("/")[0], v = parse(data); if (v) CAMAS[k] = v; else delete CAMAS[k]; }
+    Object.keys(CAMAS).forEach(function (k) { var pend = (store("camino-camas-pend") || {})[k]; if (!pend) store("camino-camas-" + k, CAMAS[k]); });
+    camasOnline = true;
+    document.querySelectorAll("[data-plan]").forEach(function (el) {
+      var a = T.alojamientos.find(function (x) { return x.id === el.getAttribute("data-plan"); });
+      if (a && !el.querySelector(".slot.sel")) { el.outerHTML = planHtml(a); bindPlan(document.getElementById("sheet") || document, a); }
+    });
+  }
+  function camasConnect() {
+    if (!POO_DB) return;
+    fetch(POO_DB + "/camas.json").then(function (r) { return r.ok ? r.json() : Promise.reject(); }).then(function (d) { camasApply("/", d); camasFlush(); }, function () {});
+    if (window.EventSource && !camasES) {
+      try {
+        camasES = new EventSource(POO_DB + "/camas.json");
+        camasES.addEventListener("put", function (e) { try { var m = JSON.parse(e.data); camasApply(m.path, m.data); } catch (x) {} });
+        camasES.addEventListener("patch", function (e) { try { var m = JSON.parse(e.data); Object.keys(m.data || {}).forEach(function (k) { camasApply("/" + k, m.data[k]); }); } catch (x) {} });
+        camasES.onerror = function () { try { camasES.close(); } catch (x) {} camasES = null; setTimeout(camasConnect, 20000); };
+      } catch (e) {}
+    }
+  }
+  window.addEventListener("online", camasFlush);
+  function bindPlan(root, a) {
+    var el = root.querySelector('[data-plan="' + a.id + '"]'); if (!el) return;
+    var sel = null;
+    function info() { var p = el.querySelector("[data-sync]"); if (p) p.textContent = (store("camino-camas-pend") || {})[a.id] ? "Pendiente de enviar: se compartirá cuando haya cobertura." : ""; }
+    function move(from, to) {
+      if (!from || !to || from === to) return;
+      var m = camasMap(a), x = m[from], y = m[to];
+      if (!x) return;
+      m[to] = x; if (y) m[from] = y; else delete m[from];
+      saveCamas(a, m);
+      el.outerHTML = planHtml(a); bindPlan(root, a);
+      if (navigator.vibrate) try { navigator.vibrate(15); } catch (e) {}
+      toast(y ? x + " ↔ " + y : x + " cambia de sitio");
+      renderItinerario();
+    }
+    el.querySelectorAll("[data-slot]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (b._dragged) { b._dragged = false; return; }
+        var k = b.getAttribute("data-slot");
+        if (!sel) { if (b.classList.contains("full")) { sel = k; b.classList.add("sel"); } return; }
+        if (sel === k) { sel = null; b.classList.remove("sel"); return; }
+        move(sel, k);
+      });
+      // arrastrar
+      b.addEventListener("pointerdown", function (e) {
+        if (!b.classList.contains("full")) return;
+        if (e.pointerType === "mouse") e.preventDefault();
+        var sx = e.clientX, sy = e.clientY, ghost = null, over = null, id = e.pointerId;
+        function mv(ev) {
+          if (ev.pointerId !== id) return;
+          if (!ghost && Math.hypot(ev.clientX - sx, ev.clientY - sy) > 8) {
+            ghost = b.querySelector(".sav").cloneNode(); ghost.className = "drag-ghost"; document.body.appendChild(ghost);
+          }
+          if (!ghost) return;
+          ev.preventDefault();
+          ghost.style.left = ev.clientX + "px"; ghost.style.top = ev.clientY + "px";
+          var t = document.elementFromPoint(ev.clientX, ev.clientY); t = t && t.closest ? t.closest(".plan [data-slot]") : null;
+          if (over && over !== t) over.classList.remove("target");
+          over = t; if (over && over !== b) over.classList.add("target");
+        }
+        function up(ev) {
+          if (ev.pointerId !== id) return;
+          document.removeEventListener("pointermove", mv); document.removeEventListener("pointerup", up); document.removeEventListener("pointercancel", up);
+          if (!ghost) return;
+          ghost.remove(); b._dragged = true; setTimeout(function () { b._dragged = false; }, 50);
+          if (over) { over.classList.remove("target"); move(b.getAttribute("data-slot"), over.getAttribute("data-slot")); }
+        }
+        document.addEventListener("pointermove", mv, { passive: false }); document.addEventListener("pointerup", up); document.addEventListener("pointercancel", up);
+      });
+    });
+    info();
+  }
+
   function stayDetail(a) {
     var n = T.viaje.viajeros.length;
     var fl = (a.fotos && a.fotos.length ? a.fotos : a.foto ? [a.foto] : []).filter(function (f) { return photo(f); });
@@ -3386,11 +4214,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
       "<dt>Reserva</dt>" + (a.localizador ? '<dd><span>' + esc(a.localizador) + '</span><button class="btn small" type="button" data-copy="' + esc(a.localizador) + '">' + I.copy + "Copiar</button></dd>"
         : a.reservadoPor ? "<dd>Hecha por " + esc(a.reservadoPor) + (a.via ? " en " + esc(a.via) : "") + "</dd>" : '<dd class="empty">aún sin reservar</dd>') +
       "</dl>" + (a.aviso ? '<p class="aviso-note">⚠ ' + esc(a.aviso) + "</p>" : "") + (a.notas ? '<p class="small-note">' + esc(a.notas) + "</p>" : "") + "</div>" +
-      (a.habitaciones || (a.camas && a.camas.length) ? '<div class="card rooms"><h4>' + I.bed.replace("<svg", '<svg style="width:18px;height:18px;vertical-align:-3px;margin-right:6px"') + esc(a.habitaciones || "Habitaciones") + "</h4>" +
+      (a.plano ? planHtml(a) : "") +
+      (!a.plano && (a.habitaciones || (a.camas && a.camas.length)) ? '<div class="card rooms"><h4>' + I.bed.replace("<svg", '<svg style="width:18px;height:18px;vertical-align:-3px;margin-right:6px"') + esc(a.habitaciones || "Habitaciones") + "</h4>" +
         (a.camas && a.camas.length ? "<ul>" + a.camas.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>" : "") + "</div>" : "") +
       '<div class="links">' + (a.booking ? '<a class="btn primary" href="' + esc(a.booking) + '" target="_blank" rel="noopener">' + I.ext + "Ver en " + esc(a.via || (/airbnb/.test(a.booking) ? "Airbnb" : "Booking")) + "</a>" : "") +
       '<a class="btn" href="' + mapsSearch(a.mapa) + '" target="_blank" rel="noopener">' + I.pin + "Cómo llegar</a></div>";
-    openSheet(a.lugar, html);
+    openSheet(a.lugar, html, function (body) { bindPlan(body, a); });
   }
 
   function renderDocumentos() {
@@ -4485,7 +5314,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
     if (!T) { document.querySelector("main").innerHTML = '<p class="hint">No se han podido cargar los datos del viaje. Revisa que trip.json esté bien escrito.</p>'; return; }
     POO_DB = ((T.compartido && T.compartido.db) || "").replace(/\/+$/, "");
     renderHeader(); renderItinerario(); renderDocumentos(); renderEmergencias(); renderMapa(); renderJuegos();
-    pooConnect();
+    pooConnect(); camasConnect();
+    document.addEventListener("click", function (ev) {
+      var b = ev.target.closest && ev.target.closest("[data-open-stay]"); if (!b) return;
+      ev.preventDefault(); ev.stopPropagation();
+      var a = T.alojamientos.find(function (x) { return x.id === b.getAttribute("data-open-stay"); }); if (a) stayDetail(a);
+    }, true);
     document.querySelectorAll("[data-tab]").forEach(function (t) { t.addEventListener("click", function () { showTab(t.getAttribute("data-tab"), true); }); });
     document.addEventListener("click", function (ev) { var b = ev.target.closest("[data-copy]"); if (b) { ev.preventDefault(); ev.stopPropagation(); copyText(b.getAttribute("data-copy")); } }, true);
     $("fab").addEventListener("click", function () { openGasto(null); });

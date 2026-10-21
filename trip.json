@@ -17,7 +17,29 @@
       "Pablo",
       "Álvaro"
     ],
-    "fotoPortada": "intro"
+    "fotoPortada": "intro",
+    "parejas": [
+      [
+        "Fran",
+        "Marina"
+      ],
+      [
+        "Marta",
+        "Pablo"
+      ],
+      [
+        "Janina",
+        "Javi"
+      ],
+      [
+        "Ana",
+        "Jorge"
+      ],
+      [
+        "Sandra",
+        "Álvaro"
+      ]
+    ]
   },
   "pendientes": [
     {
@@ -356,7 +378,129 @@
         "aloj-sarria-1",
         "aloj-sarria-2",
         "aloj-sarria-3"
-      ]
+      ],
+      "plano": {
+        "unidades": [
+          {
+            "id": "A",
+            "nombre": "Apartamento 1",
+            "rooms": [
+              {
+                "id": "a1",
+                "nombre": "Dormitorio 1",
+                "camas": [
+                  {
+                    "id": "b1",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "b2",
+                    "tipo": "individual",
+                    "plazas": 1
+                  }
+                ]
+              },
+              {
+                "id": "a2",
+                "nombre": "Dormitorio 2",
+                "camas": [
+                  {
+                    "id": "b3",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "a3",
+                "nombre": "Salón",
+                "camas": [
+                  {
+                    "id": "b4",
+                    "tipo": "sofa",
+                    "plazas": 1
+                  }
+                ]
+              }
+            ],
+            "info": "2 baños · cocina"
+          },
+          {
+            "id": "B",
+            "nombre": "Apartamento 2",
+            "rooms": [
+              {
+                "id": "b_1",
+                "nombre": "Dormitorio 1",
+                "camas": [
+                  {
+                    "id": "b5",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "b6",
+                    "tipo": "individual",
+                    "plazas": 1
+                  }
+                ]
+              },
+              {
+                "id": "b_2",
+                "nombre": "Dormitorio 2",
+                "camas": [
+                  {
+                    "id": "b7",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "b_3",
+                "nombre": "Salón",
+                "camas": [
+                  {
+                    "id": "b8",
+                    "tipo": "sofa",
+                    "plazas": 1
+                  }
+                ]
+              }
+            ],
+            "info": "2 baños · cocina"
+          }
+        ]
+      },
+      "reparto": {
+        "b3": [
+          "Fran",
+          "Marina"
+        ],
+        "b1": [
+          "Marta"
+        ],
+        "b2": [
+          "Pablo"
+        ],
+        "b4": [
+          "Sandra"
+        ],
+        "b7": [
+          "Janina",
+          "Javi"
+        ],
+        "b5": [
+          "Ana"
+        ],
+        "b6": [
+          "Jorge"
+        ],
+        "b8": [
+          "Álvaro"
+        ]
+      }
     },
     {
       "id": "portomarin",
@@ -379,7 +523,103 @@
       "camas": [
         "3 habitaciones dobles",
         "1 habitación de 4 camas"
-      ]
+      ],
+      "plano": {
+        "unidades": [
+          {
+            "id": "P",
+            "nombre": "Pensión Manuel",
+            "rooms": [
+              {
+                "id": "h1",
+                "nombre": "Habitación doble 1",
+                "camas": [
+                  {
+                    "id": "d1",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "h2",
+                "nombre": "Habitación doble 2",
+                "camas": [
+                  {
+                    "id": "d2",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "h3",
+                "nombre": "Habitación doble 3",
+                "camas": [
+                  {
+                    "id": "d3",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "h4",
+                "nombre": "Habitación de 4",
+                "camas": [
+                  {
+                    "id": "i1",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "i2",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "i3",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "i4",
+                    "tipo": "individual",
+                    "plazas": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "estimado": "Las dobles pueden ser de matrimonio o de 2 camas: confirmar al llegar."
+      },
+      "reparto": {
+        "d1": [
+          "Sandra",
+          "Álvaro"
+        ],
+        "d2": [
+          "Marta",
+          "Pablo"
+        ],
+        "d3": [
+          "Ana",
+          "Jorge"
+        ],
+        "i1": [
+          "Fran"
+        ],
+        "i2": [
+          "Marina"
+        ],
+        "i3": [
+          "Janina"
+        ],
+        "i4": [
+          "Javi"
+        ]
+      }
     },
     {
       "id": "palas",
@@ -409,7 +649,122 @@
         "aloj-palas-1",
         "aloj-palas-2",
         "aloj-palas-3"
-      ]
+      ],
+      "plano": {
+        "unidades": [
+          {
+            "id": "A1",
+            "nombre": "Apartamento 1",
+            "rooms": [
+              {
+                "id": "p1",
+                "nombre": "Dormitorio",
+                "camas": [
+                  {
+                    "id": "g1",
+                    "tipo": "grande",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "p1s",
+                "nombre": "Salón",
+                "camas": [
+                  {
+                    "id": "s1",
+                    "tipo": "sofa",
+                    "plazas": 2
+                  }
+                ]
+              }
+            ],
+            "info": "hasta 4 · baño · cocina"
+          },
+          {
+            "id": "A2",
+            "nombre": "Apartamento 2",
+            "rooms": [
+              {
+                "id": "p2",
+                "nombre": "Dormitorio",
+                "camas": [
+                  {
+                    "id": "g2",
+                    "tipo": "grande",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "p2s",
+                "nombre": "Salón",
+                "camas": [
+                  {
+                    "id": "s2",
+                    "tipo": "sofa",
+                    "plazas": 1
+                  }
+                ]
+              }
+            ],
+            "info": "hasta 3 · baño · cocina"
+          },
+          {
+            "id": "A3",
+            "nombre": "Apartamento 3",
+            "rooms": [
+              {
+                "id": "p3",
+                "nombre": "Dormitorio",
+                "camas": [
+                  {
+                    "id": "g3",
+                    "tipo": "grande",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "p3s",
+                "nombre": "Salón",
+                "camas": [
+                  {
+                    "id": "s3",
+                    "tipo": "sofa",
+                    "plazas": 1
+                  }
+                ]
+              }
+            ],
+            "info": "hasta 3 · baño · cocina"
+          }
+        ]
+      },
+      "reparto": {
+        "g1": [
+          "Fran",
+          "Marina"
+        ],
+        "s1": [
+          "Marta",
+          "Pablo"
+        ],
+        "g2": [
+          "Sandra",
+          "Álvaro"
+        ],
+        "s2": [
+          "Ana"
+        ],
+        "g3": [
+          "Janina",
+          "Javi"
+        ],
+        "s3": [
+          "Jorge"
+        ]
+      }
     },
     {
       "id": "arzua",
@@ -437,7 +792,111 @@
         "aloj-arzua-1",
         "aloj-arzua-2",
         "aloj-arzua-3"
-      ]
+      ],
+      "plano": {
+        "unidades": [
+          {
+            "id": "H",
+            "nombre": "Del Peregrino",
+            "rooms": [
+              {
+                "id": "t1",
+                "nombre": "Triple 1",
+                "camas": [
+                  {
+                    "id": "t1a",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "t1b",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "t1c",
+                    "tipo": "individual",
+                    "plazas": 1
+                  }
+                ]
+              },
+              {
+                "id": "t2",
+                "nombre": "Triple 2",
+                "camas": [
+                  {
+                    "id": "t2a",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "t2b",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "t2c",
+                    "tipo": "individual",
+                    "plazas": 1
+                  }
+                ]
+              },
+              {
+                "id": "q1",
+                "nombre": "Doble 1",
+                "camas": [
+                  {
+                    "id": "q1a",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "q2",
+                "nombre": "Doble 2",
+                "camas": [
+                  {
+                    "id": "q2a",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              }
+            ],
+            "info": "cada habitación con baño"
+          }
+        ],
+        "estimado": "Reparto supuesto (2 triples + 2 dobles): confirmar con Pablo."
+      },
+      "reparto": {
+        "q1a": [
+          "Ana",
+          "Jorge"
+        ],
+        "q2a": [
+          "Marta",
+          "Pablo"
+        ],
+        "t1a": [
+          "Janina"
+        ],
+        "t1b": [
+          "Javi"
+        ],
+        "t1c": [
+          "Fran"
+        ],
+        "t2a": [
+          "Sandra"
+        ],
+        "t2b": [
+          "Álvaro"
+        ],
+        "t2c": [
+          "Marina"
+        ]
+      }
     },
     {
       "id": "pedrouzo",
@@ -466,7 +925,103 @@
         "aloj-pedrouzo-1",
         "aloj-pedrouzo-2",
         "aloj-pedrouzo-3"
-      ]
+      ],
+      "plano": {
+        "unidades": [
+          {
+            "id": "C",
+            "nombre": "O Lar da Crega",
+            "rooms": [
+              {
+                "id": "r1",
+                "nombre": "Dormitorio 1",
+                "camas": [
+                  {
+                    "id": "e1",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "r2",
+                "nombre": "Dormitorio 2",
+                "camas": [
+                  {
+                    "id": "e2",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "r3",
+                "nombre": "Dormitorio 3",
+                "camas": [
+                  {
+                    "id": "e3",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "r4",
+                "nombre": "Dormitorio 4",
+                "camas": [
+                  {
+                    "id": "e4",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "r5",
+                "nombre": "Dormitorio 5",
+                "camas": [
+                  {
+                    "id": "e5",
+                    "tipo": "individual",
+                    "plazas": 1
+                  },
+                  {
+                    "id": "e6",
+                    "tipo": "individual",
+                    "plazas": 1
+                  }
+                ]
+              }
+            ],
+            "info": "3 baños · cocina · jardín"
+          }
+        ],
+        "estimado": "Airbnb dice 5 dormitorios y 6 camas: supongo 4 dobles + 1 con 2 individuales."
+      },
+      "reparto": {
+        "e1": [
+          "Fran",
+          "Marina"
+        ],
+        "e2": [
+          "Sandra",
+          "Álvaro"
+        ],
+        "e3": [
+          "Ana",
+          "Jorge"
+        ],
+        "e4": [
+          "Marta",
+          "Pablo"
+        ],
+        "e5": [
+          "Janina"
+        ],
+        "e6": [
+          "Javi"
+        ]
+      }
     },
     {
       "id": "santiago",
@@ -494,7 +1049,84 @@
         "aloj-santiago-1",
         "aloj-santiago-2",
         "aloj-santiago-3"
-      ]
+      ],
+      "plano": {
+        "unidades": [
+          {
+            "id": "S",
+            "nombre": "Pensión da Sela",
+            "rooms": [
+              {
+                "id": "f1",
+                "nombre": "Familiar 1",
+                "camas": [
+                  {
+                    "id": "f1d",
+                    "tipo": "doble",
+                    "plazas": 2
+                  },
+                  {
+                    "id": "f1l",
+                    "tipo": "litera",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "f2",
+                "nombre": "Familiar 2",
+                "camas": [
+                  {
+                    "id": "f2d",
+                    "tipo": "doble",
+                    "plazas": 2
+                  },
+                  {
+                    "id": "f2l",
+                    "tipo": "litera",
+                    "plazas": 2
+                  }
+                ]
+              },
+              {
+                "id": "f3",
+                "nombre": "Doble",
+                "camas": [
+                  {
+                    "id": "f3d",
+                    "tipo": "doble",
+                    "plazas": 2
+                  }
+                ]
+              }
+            ],
+            "info": "todas con baño"
+          }
+        ],
+        "estimado": "Reparto supuesto (2 familiares + 1 doble): confirmar con Pablo."
+      },
+      "reparto": {
+        "f1d": [
+          "Fran",
+          "Marina"
+        ],
+        "f1l": [
+          "Marta",
+          "Pablo"
+        ],
+        "f2d": [
+          "Sandra",
+          "Álvaro"
+        ],
+        "f2l": [
+          "Janina",
+          "Javi"
+        ],
+        "f3d": [
+          "Ana",
+          "Jorge"
+        ]
+      }
     }
   ],
   "seguro": {
